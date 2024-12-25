@@ -48,8 +48,18 @@ class NavBar extends GetView<HomeController> {
                       controller.changeTheme();
                     },
                     icon: controller.lightThemeMode.value
-                        ? const Icon(Icons.dark_mode_outlined)
-                        : const Icon(Icons.light_mode_outlined))
+                        ? Icon(
+                            Icons.dark_mode_outlined,
+                            color: controller.lightThemeMode.value
+                                ? AppColors.black
+                                : AppColors.white,
+                          )
+                        : Icon(
+                            Icons.light_mode_outlined,
+                            color: controller.lightThemeMode.value
+                                ? AppColors.black
+                                : AppColors.white,
+                          ))
               ],
             );
           })),

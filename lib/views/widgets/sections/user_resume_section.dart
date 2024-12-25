@@ -16,7 +16,10 @@ class UserResumeSection extends GetView<HomeController> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-         HeadingWithLineUi(heading: "resume_", lineWidth: Get.width <= 470 ? 100 : AppDimesions.px_225,),
+        HeadingWithLineUi(
+          heading: "resume_",
+          lineWidth: Get.width <= 470 ? 100 : AppDimesions.px_225,
+        ),
         const SizedBox(
           height: AppDimesions.px_10,
         ),
@@ -36,11 +39,17 @@ class UserResumeSection extends GetView<HomeController> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    ConatinerImageText(
-                      imageName: "education.png",
-                      skillName: Utils.getString("education"),
-                      textStyle: AppTextStyles.textMedium20mp600(),
-                      color: AppColors.transparent,
+                    Obx(
+                      () => ConatinerImageText(
+                        imageName: "education.png",
+                        skillName: Utils.getString("education"),
+                        textStyle: AppTextStyles.textMedium20mp600(
+                          color: controller.lightThemeMode.value
+                              ? AppColors.black
+                              : AppColors.white,
+                        ),
+                        color: AppColors.transparent,
+                      ),
                     ),
                     UserResumeDataUi(
                         date: "2020-2024",
@@ -71,11 +80,17 @@ class UserResumeSection extends GetView<HomeController> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    ConatinerImageText(
-                      imageName: "experience.png",
-                      skillName: Utils.getString("experience"),
-                      textStyle: AppTextStyles.textMedium20mp600(),
-                      color: AppColors.transparent,
+                    Obx(
+                      () => ConatinerImageText(
+                        imageName: "experience.png",
+                        skillName: Utils.getString("experience"),
+                        textStyle: AppTextStyles.textMedium20mp600(
+                          color: controller.lightThemeMode.value
+                              ? AppColors.black
+                              : AppColors.white,
+                        ),
+                        color: AppColors.transparent,
+                      ),
                     ),
                     UserResumeDataUi(
                       date: "2024",
@@ -104,9 +119,15 @@ class UserResumeSection extends GetView<HomeController> {
         const SizedBox(
           height: AppDimesions.px_10,
         ),
-        Text(
-          Utils.getString("work_skills"),
-          style: AppTextStyles.textMedium20mp600(),
+        Obx(
+          () => Text(
+            Utils.getString("work_skills"),
+            style: AppTextStyles.textMedium20mp600(
+              color: controller.lightThemeMode.value
+                  ? AppColors.black
+                  : AppColors.white,
+            ),
+          ),
         ),
         const SizedBox(
           height: AppDimesions.px_10,

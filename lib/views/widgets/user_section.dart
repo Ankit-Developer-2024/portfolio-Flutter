@@ -37,7 +37,12 @@ class UserSection extends GetView<HomeController> {
                     color: controller.lightThemeMode.value
                         ? AppColors.white
                         : AppColors.mediumBlue,
-                    borderRadius: BorderRadius.circular(AppDimesions.radius_8)),
+                    borderRadius: BorderRadius.circular(AppDimesions.radius_8),
+                    border: Border.all(
+                      color: controller.lightThemeMode.value
+                          ? AppColors.lightBlackish
+                          : AppColors.primary,
+                    )),
                 child: controller.getUserSection(
                     controller.navBarButtonSelectedIndex.value)),
           ),
