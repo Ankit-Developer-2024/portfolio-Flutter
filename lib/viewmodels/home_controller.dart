@@ -16,6 +16,8 @@ class HomeController extends GetxController {
   TextEditingController mailPhoneController = TextEditingController();
   TextEditingController messageController = TextEditingController();
 
+  var themeMode = ThemeMode.light.obs;
+
   List<Map<String, dynamic>> listOfSkills = [
     {
       "skillName": "App Development",
@@ -103,8 +105,6 @@ class HomeController extends GetxController {
     "C++",
     "OOPS"
   ];
-
-  List<String> protfolioImages = [];
 
   List<Map<String, dynamic>> prorfolioProject = [
     {
@@ -210,6 +210,14 @@ class HomeController extends GetxController {
     if (!isActive(val)) {
       changeActiveItem(val);
     }
+  }
+
+  void changeTheme() {
+    themeMode.value =
+        themeMode.value == ThemeMode.light ? ThemeMode.dark : ThemeMode.light;
+
+    lightThemeMode.value = !lightThemeMode.value;
+    return;
   }
 
   Widget getUserSection(int value) {

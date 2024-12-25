@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:protfolio/core/styles/app_dimesions.dart';
-import 'package:protfolio/views/widgets/sections/top_bar.dart';
+import 'package:protfolio/views/widgets/top_bar.dart';
 import 'package:protfolio/views/widgets/side_bar.dart';
 import 'package:protfolio/views/widgets/nav_bar.dart';
 import 'package:protfolio/views/widgets/user_section.dart';
@@ -48,6 +48,8 @@ class HomeDesktopScreen extends StatelessWidget {
               );
             })),
       ),
+   
+   
     );
   }
 }

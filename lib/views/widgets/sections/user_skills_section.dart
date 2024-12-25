@@ -17,7 +17,10 @@ class UserSkillsSection extends GetView<HomeController> {
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisSize: MainAxisSize.min,
       children: [
-        const HeadingWithLineUi(heading: "Skills"),
+        HeadingWithLineUi(
+          heading: "skills",
+          lineWidth: Get.width <= 470 ? 100 : AppDimesions.px_225,
+        ),
         const SizedBox(
           height: AppDimesions.px_10,
         ),

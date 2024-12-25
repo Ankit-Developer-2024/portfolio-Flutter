@@ -14,6 +14,7 @@ class AppDimesions {
   static const double px_20 = 20;
   static const double px_22 = 22;
   static const double px_24 = 24;
+  static const double px_30 = 30;
   static const double px_50 = 50;
   static const double px_60 = 60;
   static const double px_65 = 65;
@@ -27,12 +28,16 @@ class AppDimesions {
   static const double radius_4 = 4;
   static const double radius_6 = 6;
   static const double radius_8 = 8;
+  static const double radius_14 = 14;
   static const double radius_50 = 50;
   static const double radius_70 = 70;
 
   static const double size_10 = 10;
   static const double size_20 = 20;
   static const double size_25 = 25;
+  static const double size_50 = 50;
+  static const double size_60 = 60;
+  static const double size_100 = 100;
   static const double size_550 = 550;
   static const double size_580 = 500;
 }

@@ -16,7 +16,7 @@ class UserResumeSection extends GetView<HomeController> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        const HeadingWithLineUi(heading: "Resume"),
+         HeadingWithLineUi(heading: "resume_", lineWidth: Get.width <= 470 ? 100 : AppDimesions.px_225,),
         const SizedBox(
           height: AppDimesions.px_10,
         ),

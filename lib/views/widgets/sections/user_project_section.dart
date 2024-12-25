@@ -16,7 +16,7 @@ class UserProjectSection extends GetView<HomeController> {
       mainAxisAlignment: MainAxisAlignment.start,
       mainAxisSize: MainAxisSize.min,
       children: [
-        const HeadingWithLineUi(heading: "Projects"),
+        HeadingWithLineUi(heading: "projects", lineWidth: Get.width <= 470 ? 100 : AppDimesions.px_225,),
         const SizedBox(
           height: AppDimesions.px_10,
         ),

@@ -17,10 +17,14 @@ class AppTextStyles {
     );
   }
 
-  static textMedium16mp400({color = AppColors.black,fontStyle=FontStyle.normal}) {
+  static textMedium16mp400(
+      {color = AppColors.black, fontStyle = FontStyle.normal}) {
     return GoogleFonts.aBeeZee(
-      textStyle:
-          TextStyle(fontSize: 16, color: color, fontWeight: FontWeight.w400,fontStyle:fontStyle),
+      textStyle: TextStyle(
+          fontSize: 16,
+          color: color,
+          fontWeight: FontWeight.w400,
+          fontStyle: fontStyle),
     );
   }
 
@@ -31,7 +35,7 @@ class AppTextStyles {
     );
   }
 
-    static textMedium20mp600({color = AppColors.black}) {
+  static textMedium20mp600({color = AppColors.black}) {
     return GoogleFonts.aBeeZee(
       textStyle:
           TextStyle(fontSize: 20, color: color, fontWeight: FontWeight.w600),

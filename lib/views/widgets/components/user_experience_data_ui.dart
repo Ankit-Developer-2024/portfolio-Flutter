@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:protfolio/core/app/componetns/bullet_list.dart';
 import 'package:protfolio/core/styles/app_dimesions.dart';
 import 'package:protfolio/core/styles/app_test_styles.dart';
-import 'package:protfolio/utils/utilty/utils.dart';
 
 class UserExperienceDataUi extends StatelessWidget {
   const UserExperienceDataUi(

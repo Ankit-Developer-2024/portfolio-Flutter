@@ -5,7 +5,6 @@ import 'package:protfolio/core/styles/app_dimesions.dart';
 import 'package:protfolio/viewmodels/home_controller.dart';
 import 'package:protfolio/views/widgets/nav_bar_button.dart';
 
-
 class UserSection extends GetView<HomeController> {
   const UserSection({super.key});
 
@@ -22,21 +21,26 @@ class UserSection extends GetView<HomeController> {
           ),
           Text(
             controller.navBarButtonHoverIndex.toString(),
-            style: TextStyle(fontSize: 0),
+            style: const TextStyle(fontSize: 0),
           ),
           NavBarButton(),
           const SizedBox(
             height: AppDimesions.px_10,
           ),
-          Container(
-              width: double.maxFinite,
-              padding: const EdgeInsets.symmetric(
-                  vertical: AppDimesions.px_16, horizontal: AppDimesions.px_16),
-              decoration: BoxDecoration(
-                  color: AppColors.white,
-                  borderRadius: BorderRadius.circular(AppDimesions.radius_8)),
-              child: controller
-                  .getUserSection(controller.navBarButtonSelectedIndex.value)),
+          Obx(
+            () => Container(
+                width: double.maxFinite,
+                padding: const EdgeInsets.symmetric(
+                    vertical: AppDimesions.px_16,
+                    horizontal: AppDimesions.px_16),
+                decoration: BoxDecoration(
+                    color: controller.lightThemeMode.value
+                        ? AppColors.white
+                        : AppColors.mediumBlue,
+                    borderRadius: BorderRadius.circular(AppDimesions.radius_8)),
+                child: controller.getUserSection(
+                    controller.navBarButtonSelectedIndex.value)),
+          ),
         ],
       ),
     );

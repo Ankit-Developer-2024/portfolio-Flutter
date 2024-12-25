@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:protfolio/core/app/componetns/conatiner_image_text.dart';
 import 'package:protfolio/core/styles/app_colors.dart';
 import 'package:protfolio/core/styles/app_dimesions.dart';
@@ -16,7 +17,7 @@ class UserContactSection extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const HeadingWithLineUi(heading: "Contact"),
+         HeadingWithLineUi(heading: "contanct", lineWidth: Get.width <= 470 ? 100 : AppDimesions.px_225,),
         const SizedBox(
           height: AppDimesions.px_10,
         ),

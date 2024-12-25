@@ -3,7 +3,6 @@ import 'package:protfolio/core/styles/app_colors.dart';
 import 'package:protfolio/core/styles/app_dimesions.dart';
 import 'package:protfolio/core/styles/app_test_styles.dart';
 import 'package:protfolio/utils/utilty/utils.dart';
-import 'package:protfolio/views/widgets/components/sideBar_user_data_ui.dart';
 
 class TopBar extends StatelessWidget {
   const TopBar({super.key});
@@ -15,9 +14,9 @@ class TopBar extends StatelessWidget {
       children: [
         LayoutBuilder(builder: (context, constraints) {
           return Container(
-            width: constraints.maxWidth - 50,
+            width: constraints.maxWidth - AppDimesions.size_25,
             margin: const EdgeInsets.only(
-              left: AppDimesions.px_50,
+              left: AppDimesions.px_24,
             ),
             padding: const EdgeInsets.symmetric(
                 horizontal: AppDimesions.px_16, vertical: AppDimesions.px_16),
@@ -30,9 +29,7 @@ class TopBar extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               children: [
                 //user name
-                const SizedBox(
-                  width: AppDimesions.px_50,
-                ),
+                const SizedBox(width: AppDimesions.px_18),
                 Column(
                   children: [
                     Text(
@@ -64,10 +61,11 @@ class TopBar extends StatelessWidget {
                               borderRadius:
                                   BorderRadius.circular(AppDimesions.radius_6),
                               color: AppColors.lightBlueish),
-                          child: IconButton(
-                            onPressed: () {},
-                            icon: const Icon(Icons.linked_camera),
-                            iconSize: AppDimesions.size_25,
+                          child: InkWell(
+                            onTap: () {},
+                            child: Image.asset(Utils.getIcons("linkedin.png"),
+                                width: AppDimesions.size_25,
+                                height: AppDimesions.size_25),
                           ),
                         ),
                         const SizedBox(
@@ -79,12 +77,13 @@ class TopBar extends StatelessWidget {
                               borderRadius:
                                   BorderRadius.circular(AppDimesions.radius_6),
                               color: AppColors.lightBlueish),
-                          child: IconButton(
-                            onPressed: () {},
-                            icon: const Icon(
-                              Icons.facebook_outlined,
+                          child: InkWell(
+                            onTap: () {},
+                            child: Image.asset(
+                              Utils.getIcons("github.png"),
+                              width: AppDimesions.size_25,
+                              height: AppDimesions.size_25,
                             ),
-                            iconSize: AppDimesions.size_25,
                           ),
                         ),
                       ],
@@ -180,11 +179,21 @@ class TopBar extends StatelessWidget {
             ),
           );
         }),
-        const CircleAvatar(
-          maxRadius: AppDimesions.radius_50,
-          minRadius: 4,
-          child: Text('AK'),
-        )
+        Container(
+          width: AppDimesions.size_60,
+          height: AppDimesions.size_60,
+          decoration: BoxDecoration(
+              border: Border.all(
+                  color: AppColors.primary, width: AppDimesions.px_2),
+              borderRadius: BorderRadius.circular(AppDimesions.radius_8)),
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(AppDimesions.radius_6),
+            child: Image.asset(
+              Utils.getImages("user.jpeg"),
+              fit: BoxFit.fill,
+            ),
+          ),
+        ),
       ],
     );
   }

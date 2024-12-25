@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:protfolio/viewmodels/home_controller.dart';
 import 'package:protfolio/views/widgets/components/heading_with_line_ui.dart';
 import 'package:protfolio/core/styles/app_colors.dart';
 import 'package:protfolio/core/styles/app_dimesions.dart';
@@ -14,20 +16,31 @@ class UserHomeSection extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const HeadingWithLineUi(heading: "about_me"),
+        HeadingWithLineUi(
+          heading: "about_me",
+          lineWidth: Get.width <= 470 ? 100 : AppDimesions.px_225,
+        ),
         const SizedBox(
           height: AppDimesions.px_10,
         ),
-        Text(Utils.getString("user_about_me"),
-            style: AppTextStyles.textMedium16mp400(
-              color: AppColors.black12,
-            )),
+        Obx(
+          () => Text(Utils.getString("user_about_me"),
+              style: AppTextStyles.textMedium16mp400(
+                  color: Get.find<HomeController>().lightThemeMode.value
+                      ? AppColors.black
+                      : AppColors.white)),
+        ),
         const SizedBox(
           height: AppDimesions.px_10,
         ),
-        Text(
-          Utils.getString("what_i_do"),
-          style: AppTextStyles.textMedium30mpbold(),
+        Obx(
+          () => Text(
+            Utils.getString("what_i_do"),
+            style: AppTextStyles.textMedium30mpbold(
+                color: Get.find<HomeController>().lightThemeMode.value
+                    ? AppColors.black
+                    : AppColors.white),
+          ),
         ),
         const SizedBox(
           height: AppDimesions.px_10,
@@ -111,8 +124,6 @@ class UserHomeSection extends StatelessWidget {
             ],
           );
         })
-     
-     
       ],
     );
   }

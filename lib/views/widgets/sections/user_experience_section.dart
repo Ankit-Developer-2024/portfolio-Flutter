@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:protfolio/utils/utilty/utils.dart';
 import 'package:protfolio/views/widgets/components/heading_with_line_ui.dart';
 import 'package:protfolio/core/styles/app_dimesions.dart';
@@ -14,7 +15,10 @@ class UserExperienceSection extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisSize: MainAxisSize.min,
       children: [
-        const HeadingWithLineUi(heading: "experience"),
+        HeadingWithLineUi(
+          heading: "experience",
+          lineWidth: Get.width <= 470 ? 100 : AppDimesions.px_225,
+        ),
         const SizedBox(
           height: AppDimesions.px_10,
         ),

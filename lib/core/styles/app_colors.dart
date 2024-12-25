@@ -3,8 +3,10 @@ import 'package:flutter/material.dart';
 class AppColors {
   static const Color black = Colors.black;
   static const Color black12 = Color(0xff1A1003);
+  static const Color darkModeColor = Color.fromARGB(255, 3, 10, 42);
   static const Color grey = Colors.grey;
   static const Color white = Colors.white;
+  static const Color mediumBlue = Color.fromARGB(226, 20, 27, 43);
   static const Color transparent = Colors.transparent;
 
   static const Color primaryWhite = Color(0xffF2F5F9);
