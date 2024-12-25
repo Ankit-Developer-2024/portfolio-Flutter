@@ -5,7 +5,15 @@ import 'package:protfolio/core/styles/app_test_styles.dart';
 import 'package:protfolio/utils/utilty/utils.dart';
 
 class UserExperienceDataUi extends StatelessWidget {
-  const UserExperienceDataUi({super.key,required this.yourTechRole,required this.yourPostion, required this.date,required this.companyName,required this.companyLocation,required this.listOfYourWorkDoneInComapny});
+  const UserExperienceDataUi(
+      {super.key,
+      required this.yourTechRole,
+      required this.yourPostion,
+      required this.date,
+      required this.companyName,
+      required this.companyLocation,
+      required this.listOfYourWorkDoneInComapny,
+      });
 
   final String yourTechRole;
   final String yourPostion;
@@ -23,7 +31,7 @@ class UserExperienceDataUi extends StatelessWidget {
       children: [
         RichText(
             text: TextSpan(style: AppTextStyles.textMedium16mp600(), children: [
-           TextSpan(text: yourTechRole),
+          TextSpan(text: yourTechRole),
           const WidgetSpan(
               alignment: PlaceholderAlignment.baseline,
               baseline: TextBaseline.alphabetic,
@@ -33,7 +41,7 @@ class UserExperienceDataUi extends StatelessWidget {
               alignment: PlaceholderAlignment.baseline,
               baseline: TextBaseline.alphabetic,
               child: SizedBox(width: 10)),
-           TextSpan(text: yourPostion),
+          TextSpan(text: yourPostion),
           const WidgetSpan(
               alignment: PlaceholderAlignment.baseline,
               baseline: TextBaseline.alphabetic,
@@ -47,23 +55,21 @@ class UserExperienceDataUi extends StatelessWidget {
           height: AppDimesions.px_6,
         ),
         RichText(
-            text: TextSpan(
-                style: AppTextStyles.textMedium16mp600(),
-                children:  [
-              TextSpan(text: companyName),
-             const WidgetSpan(
-                  alignment: PlaceholderAlignment.baseline,
-                  baseline: TextBaseline.alphabetic,
-                  child: SizedBox(width: 10)),
-             const TextSpan(text: "-"),
-              const WidgetSpan(
-                  alignment: PlaceholderAlignment.baseline,
-                  baseline: TextBaseline.alphabetic,
-                  child: SizedBox(width: 10)),
-              TextSpan(
-                text: companyLocation,
-              )
-            ])),
+            text: TextSpan(style: AppTextStyles.textMedium16mp600(), children: [
+          TextSpan(text: companyName),
+          const WidgetSpan(
+              alignment: PlaceholderAlignment.baseline,
+              baseline: TextBaseline.alphabetic,
+              child: SizedBox(width: 10)),
+          const TextSpan(text: "-"),
+          const WidgetSpan(
+              alignment: PlaceholderAlignment.baseline,
+              baseline: TextBaseline.alphabetic,
+              child: SizedBox(width: 10)),
+          TextSpan(
+            text: companyLocation,
+          )
+        ])),
         const SizedBox(
           height: AppDimesions.px_6,
         ),

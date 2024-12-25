@@ -22,13 +22,13 @@ class UserSkillsSection extends GetView<HomeController> {
           height: AppDimesions.px_10,
         ),
         Wrap(
-          //   alignment: WrapAlignment.start,
           direction: Axis.horizontal,
           spacing: AppDimesions.px_16,
           runSpacing: AppDimesions.px_10,
           children: controller.listOfSkills.indexed.map((skill) {
             final (index, data) = skill;
             return ConatinerImageText(
+              defaultWidth: false,
               imageName: data["skillImagePath"],
               skillName: data["skillName"],
               color: index % 2 != 0

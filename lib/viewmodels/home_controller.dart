@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:protfolio/core/app/componetns/section_seperate_ui.dart';
-import 'package:protfolio/core/styles/app_colors.dart';
-import 'package:protfolio/core/styles/app_dimesions.dart';
 import 'package:protfolio/utils/utilty/utils.dart';
 import 'package:protfolio/views/widgets/sections/user_contact_section.dart';
 import 'package:protfolio/views/widgets/sections/user_experience_section.dart';
@@ -104,6 +102,67 @@ class HomeController extends GetxController {
     "JavaScript",
     "C++",
     "OOPS"
+  ];
+
+  List<String> protfolioImages = [];
+
+  List<Map<String, dynamic>> prorfolioProject = [
+    {
+      "projectName": "Portfolio",
+      "projectTechUsed": "Flutter",
+      "projectDevelopmentIn": "Web Development",
+      "listOfImagesPath": [
+        "portfolio_img/portfolio_1.png",
+        "portfolio_img/portfolio_2.png",
+        "portfolio_img/portfolio_3.png",
+        "portfolio_img/portfolio_4.png",
+        "portfolio_img/portfolio_5.png",
+        "portfolio_img/portfolio_7.png"
+      ],
+    },
+    {
+      "projectName": "ShopMagnet - An online shoping platform",
+      "projectTechUsed": "MERN Stack",
+      "projectDevelopmentIn": "Web Development",
+      "listOfImagesPath": [
+        "ecom/ecom_1.png",
+        "ecom/ecom_2.png",
+        "ecom/ecom_3.png",
+        "ecom/ecom_4.png",
+        "ecom/ecom_5.png",
+        "ecom/ecom_7.png",
+        "ecom/ecom_8.png",
+        "ecom/ecom_9.png",
+        "ecom/ecom_10.png",
+        "ecom/ecom_11.png",
+        "ecom/ecom_12.png",
+        "ecom/ecom_13.png",
+        "ecom/ecom_14.png",
+        "ecom/ecom_15.png",
+        "ecom/ecom_16.png",
+        "ecom/ecom_17.png",
+        "ecom/ecom_18.png",
+        "ecom/ecom_19.png",
+        "ecom/ecom_20.png",
+      ],
+    },
+    {
+      "projectName":
+          "Server Load Tester - Test the server load by hit api multiple time",
+      "projectTechUsed": "Flutter",
+      "projectDevelopmentIn": "Web Development",
+      "listOfImagesPath": [
+        "api/api_1.png",
+        "api/api_2.png",
+        "api/api_3.png",
+        "api/api_4.png",
+        "api/api_5.png",
+        "api/api_7.png",
+        "api/api_8.png",
+        "api/api_9.png",
+        "api/api_10.png",
+      ],
+    },
   ];
 
   RxList<List<dynamic>> navBarButtonData = [

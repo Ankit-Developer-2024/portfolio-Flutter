@@ -11,37 +11,53 @@ class ConatinerImageText extends StatelessWidget {
       required this.imageName,
       required this.skillName,
       this.color,
-      this.textStyle});
+      this.textStyle,
+      this.defaultWidth = true});
   final String imageName;
   final String skillName;
   final TextStyle? textStyle;
   final Color? color;
+  final bool defaultWidth;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(AppDimesions.px_10),
-      width: Get.width / 5,
-      decoration: BoxDecoration(
-        color: color ?? AppColors.primary,
-        borderRadius: BorderRadius.circular(AppDimesions.radius_6),
-      ),
-      child: Row(
-        children: [
-          Image.asset(
-            Utils.getIcons(imageName),
-            width: AppDimesions.size_25,
-            height: AppDimesions.size_25,
-          ),
-          const SizedBox(
-            width: AppDimesions.px_6,
-          ),
-          Text(
-            skillName,
-            style: textStyle ?? AppTextStyles.textMedium16mp400(),
-          ),
-        ],
-      ),
-    );
+    return LayoutBuilder(builder: (context, constraints) {
+      return Container(
+        padding: const EdgeInsets.all(AppDimesions.px_10),
+        width: defaultWidth
+            ? constraints.maxWidth
+            : constraints.maxWidth < AppDimesions.size_550
+                ? constraints.maxWidth - 10
+                : constraints.maxWidth / 3 - 11,
+        decoration: BoxDecoration(
+          color: color ?? AppColors.primary,
+          borderRadius: BorderRadius.circular(AppDimesions.radius_6),
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Image.asset(
+              Utils.getIcons(imageName),
+              width: AppDimesions.size_25,
+              height: AppDimesions.size_25,
+            ),
+            const SizedBox(
+              width: AppDimesions.px_6,
+            ),
+            Flexible(
+              child: Text(
+                skillName,
+                style: textStyle ?? AppTextStyles.textMedium16mp400(),
+                maxLines: 5,
+                softWrap: true,
+                overflow: TextOverflow.ellipsis,
+              ),
+            )
+          ],
+        ),
+      );
+    });
   }
 }

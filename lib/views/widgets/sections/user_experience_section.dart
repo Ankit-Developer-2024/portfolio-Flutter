@@ -18,29 +18,40 @@ class UserExperienceSection extends StatelessWidget {
         const SizedBox(
           height: AppDimesions.px_10,
         ),
-        UserExperienceDataUi(
-          yourTechRole: Utils.getString("flutter_developer"),
-          yourPostion: Utils.getString("sde_1"),
-          date: Utils.getString("2024"),
-          companyName: Utils.getString("company_krishiacharya"),
-          companyLocation: Utils.getString("location_gurugram"),
-          listOfYourWorkDoneInComapny: [
-            Utils.getString("sde_1_point_1"),
-            Utils.getString("sde_1_point_2"),
-            Utils.getString("sde_1_point_3"),
-          ],
-        ),
-        const SizedBox(
-          height: AppDimesions.px_16,
-        ),
-        UserExperienceDataUi(
-          yourTechRole: Utils.getString("flutter_developer"),
-          yourPostion: Utils.getString("intern"),
-          date: Utils.getString("feb_2024_july_2024"),
-          companyName: Utils.getString("company_krishiacharya"),
-          companyLocation: Utils.getString("location_gurugram"),
-          listOfYourWorkDoneInComapny: [Utils.getString("intern_1_point_1")],
-        ),
+        LayoutBuilder(builder: (context, constraints) {
+          return Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              UserExperienceDataUi(
+                yourTechRole: Utils.getString("flutter_developer"),
+                yourPostion: Utils.getString("sde_1"),
+                date: Utils.getString("2024"),
+                companyName: Utils.getString("company_krishiacharya"),
+                companyLocation: Utils.getString("location_gurugram"),
+                listOfYourWorkDoneInComapny: [
+                  Utils.getString("sde_1_point_1"),
+                  Utils.getString("sde_1_point_2"),
+                  Utils.getString("sde_1_point_3"),
+                ],
+              ),
+              const SizedBox(
+                height: AppDimesions.px_16,
+              ),
+              UserExperienceDataUi(
+                yourTechRole: Utils.getString("flutter_developer"),
+                yourPostion: Utils.getString("intern"),
+                date: Utils.getString("feb_2024_july_2024"),
+                companyName: Utils.getString("company_krishiacharya"),
+                companyLocation: Utils.getString("location_gurugram"),
+                listOfYourWorkDoneInComapny: [
+                  Utils.getString("intern_1_point_1")
+                ],
+              ),
+            ],
+          );
+        }),
       ],
     );
   }

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:protfolio/core/app/gereral_bindings.dart';
 import 'package:protfolio/core/localization/localization.dart';
-import 'package:protfolio/core/styles/app_colors.dart';
 import 'package:protfolio/views/home_view.dart';
 
 void main() {
