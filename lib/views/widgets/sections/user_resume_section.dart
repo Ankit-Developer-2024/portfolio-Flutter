@@ -20,76 +20,87 @@ class UserResumeSection extends GetView<HomeController> {
         const SizedBox(
           height: AppDimesions.px_10,
         ),
-        Row(
-          children: [
-            Expanded(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  ConatinerImageText(
-                    imageName: "education.png",
-                    skillName: Utils.getString("education"),
-                    textStyle: AppTextStyles.textMedium20mp600(),
-                    color: AppColors.transparent,
-                  ),
-                  UserResumeDataUi(
-                      date: "2020-2024",
-                      userClass: Utils.getString("b_tech"),
-                      role: Utils.getString("cse"),
-                      institute: Utils.getString("gju")),
-                  const SizedBox(
-                    height: AppDimesions.px_10,
-                  ),
-                  UserResumeDataUi(
-                    date: "2019-2020",
-                    userClass: Utils.getString("secondary_school"),
-                    role: Utils.getString("non_medical"),
-                    institute: Utils.getString("aps"),
-                    color: AppColors.lightLightOrangish,
-                  ),
-                ],
+        LayoutBuilder(builder: (context, constraints) {
+          return Wrap(
+            runAlignment: WrapAlignment.start,
+            runSpacing: AppDimesions.px_10,
+            spacing: AppDimesions.px_10,
+            alignment: WrapAlignment.start,
+            children: [
+              SizedBox(
+                width: constraints.maxWidth < AppDimesions.size_550
+                    ? constraints.maxWidth
+                    : constraints.maxWidth / 2 - AppDimesions.px_10,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    ConatinerImageText(
+                      imageName: "education.png",
+                      skillName: Utils.getString("education"),
+                      textStyle: AppTextStyles.textMedium20mp600(),
+                      color: AppColors.transparent,
+                    ),
+                    UserResumeDataUi(
+                        date: "2020-2024",
+                        userClass: Utils.getString("b_tech"),
+                        role: Utils.getString("cse"),
+                        institute: Utils.getString("gju")),
+                    const SizedBox(
+                      height: AppDimesions.px_10,
+                    ),
+                    UserResumeDataUi(
+                      date: "2019-2020",
+                      userClass: Utils.getString("secondary_school"),
+                      role: Utils.getString("non_medical"),
+                      institute: Utils.getString("aps"),
+                      color: AppColors.lightLightOrangish,
+                    ),
+                  ],
+                ),
               ),
-            ),
-            const SizedBox(
-              width: AppDimesions.px_10,
-            ),
-            Expanded(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  ConatinerImageText(
-                    imageName: "experience.png",
-                    skillName: Utils.getString("experience"),
-                    textStyle: AppTextStyles.textMedium20mp600(),
-                    color: AppColors.transparent,
-                  ),
-                  UserResumeDataUi(
-                    date: "2024",
-                    userClass: Utils.getString("flutter_developer"),
-                    role: Utils.getString("sde_1"),
-                    institute:
-                        Utils.getString("company_krishiacharya_with_location"),
-                    color: AppColors.lightLightOrangish,
-                  ),
-                  const SizedBox(
-                    height: AppDimesions.px_10,
-                  ),
-                  UserResumeDataUi(
-                    date: "Feb 2024-July 2024",
-                    userClass: Utils.getString("flutter_developer"),
-                    role: Utils.getString("intern"),
-                    institute:
-                        Utils.getString("company_krishiacharya_with_location"),
-                  ),
-                ],
+
+              //------------
+              SizedBox(
+                width: constraints.maxWidth < AppDimesions.size_550
+                    ? constraints.maxWidth
+                    : constraints.maxWidth / 2,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    ConatinerImageText(
+                      imageName: "experience.png",
+                      skillName: Utils.getString("experience"),
+                      textStyle: AppTextStyles.textMedium20mp600(),
+                      color: AppColors.transparent,
+                    ),
+                    UserResumeDataUi(
+                      date: "2024",
+                      userClass: Utils.getString("flutter_developer"),
+                      role: Utils.getString("sde_1"),
+                      institute: Utils.getString(
+                          "company_krishiacharya_with_location"),
+                      color: AppColors.lightLightOrangish,
+                    ),
+                    const SizedBox(
+                      height: AppDimesions.px_10,
+                    ),
+                    UserResumeDataUi(
+                      date: "Feb 2024-July 2024",
+                      userClass: Utils.getString("flutter_developer"),
+                      role: Utils.getString("intern"),
+                      institute: Utils.getString(
+                          "company_krishiacharya_with_location"),
+                    ),
+                  ],
+                ),
               ),
-            ),
-          ],
-        ),
+            ],
+          );
+        }),
         const SizedBox(
           height: AppDimesions.px_10,
         ),

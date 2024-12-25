@@ -13,7 +13,7 @@ class HomeView extends StatelessWidget {
     return ScreenTypeLayout.builder(
       desktop: (_) => const HomeDesktopScreen(),
       tablet: (_) => const HomeDesktopScreen(),
-     
+      //   mobile: (_) => const HomeDesktopScreen(),
     );
   }
 }

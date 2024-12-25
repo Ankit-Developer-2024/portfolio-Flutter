@@ -20,12 +20,17 @@ class UserContactSection extends StatelessWidget {
         const SizedBox(
           height: AppDimesions.px_10,
         ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Expanded(
-              child: Container(
+        LayoutBuilder(builder: (context, constraints) {
+          return Wrap(
+            runAlignment: WrapAlignment.start,
+            runSpacing: AppDimesions.px_10,
+            spacing: AppDimesions.px_10,
+            alignment: WrapAlignment.start,
+            children: [
+              Container(
+                width: constraints.maxWidth < AppDimesions.size_550
+                    ? constraints.maxWidth
+                    : constraints.maxWidth / 2 - AppDimesions.px_10,
                 padding: const EdgeInsets.all(AppDimesions.px_8),
                 decoration: BoxDecoration(
                     color: AppColors.lightLightOrangish,
@@ -48,12 +53,10 @@ class UserContactSection extends StatelessWidget {
                   ],
                 ),
               ),
-            ),
-            const SizedBox(
-              width: AppDimesions.px_10,
-            ),
-            Expanded(
-              child: Container(
+              Container(
+                width: constraints.maxWidth < AppDimesions.size_550
+                    ? constraints.maxWidth
+                    : constraints.maxWidth / 2 - AppDimesions.px_10,
                 padding: const EdgeInsets.all(AppDimesions.px_8),
                 decoration: BoxDecoration(
                     color: AppColors.lightBlueish,
@@ -76,13 +79,13 @@ class UserContactSection extends StatelessWidget {
                   ],
                 ),
               ),
-            ),
-          ],
-        ),
+            ],
+          );
+        }),
         const SizedBox(
           height: AppDimesions.px_16,
         ),
-        UserContactForm()
+        const UserContactForm()
       ],
     );
   }

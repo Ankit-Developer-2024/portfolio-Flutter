@@ -18,7 +18,8 @@ class Localization extends Translations {
           "user_email": "kumar990ankit@gmail.com",
           "location": "Location",
           "user_location": "Hisar , Haryana , India",
-          "download_resume": "Download Resume",
+          "download": "Download",
+          "resume": " Resume",
           "about_me": "About Me",
           "user_about_me":
               """Recent Computer Science graduate with hands-on experience in mobile development using Flutter. Proficient in JavaScript, Node.js, and Dart, alongside version control systems like Git. Demonstratesstrong testing skills and familiarity with frameworks such as React.js and Flutter. Committed to continuous learning and mastering emerging technologies.""",

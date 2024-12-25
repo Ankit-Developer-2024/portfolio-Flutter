@@ -19,6 +19,7 @@ class UserResumeDataUi extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      width: double.maxFinite,
       padding: const EdgeInsets.all(AppDimesions.px_14),
       decoration: BoxDecoration(
           color: color ?? AppColors.lightOrangish,
@@ -31,17 +32,20 @@ class UserResumeDataUi extends StatelessWidget {
           Text(
             date,
             maxLines: 5,
-            style: AppTextStyles.textRegular14mp400(color: AppColors.black12),overflow: TextOverflow.ellipsis,
+            style: AppTextStyles.textRegular14mp400(color: AppColors.black12),
+            overflow: TextOverflow.ellipsis,
           ),
           Text(
             "${userClass.length > 1 ? "$userClass | " : ""}$role",
             maxLines: 5,
-            style: AppTextStyles.textMedium16mp600(),overflow: TextOverflow.ellipsis,
+            style: AppTextStyles.textMedium16mp600(),
+            overflow: TextOverflow.ellipsis,
           ),
           Text(
             institute,
             maxLines: 5,
-            style: AppTextStyles.textMedium16mp400(),overflow: TextOverflow.ellipsis,
+            style: AppTextStyles.textMedium16mp400(),
+            overflow: TextOverflow.ellipsis,
           )
         ],
       ),
