@@ -1,0 +1,46 @@
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:protfolio/core/app/componetns/conatiner_image_text.dart';
+import 'package:protfolio/core/styles/app_colors.dart';
+import 'package:protfolio/core/styles/app_dimesions.dart';
+import 'package:protfolio/core/styles/app_test_styles.dart';
+import 'package:protfolio/viewmodels/home_controller.dart';
+import 'package:protfolio/views/widgets/components/heading_with_line_ui.dart';
+
+class UserSkillsSection extends GetView<HomeController> {
+  const UserSkillsSection({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        const HeadingWithLineUi(heading: "Skills"),
+        const SizedBox(
+          height: AppDimesions.px_10,
+        ),
+        Wrap(
+          //   alignment: WrapAlignment.start,
+          direction: Axis.horizontal,
+          spacing: AppDimesions.px_16,
+          runSpacing: AppDimesions.px_10,
+          children: controller.listOfSkills.indexed.map((skill) {
+            final (index, data) = skill;
+            return ConatinerImageText(
+              imageName: data["skillImagePath"],
+              skillName: data["skillName"],
+              color: index % 2 != 0
+                  ? AppColors.lightOrangish
+                  : AppColors.lightBlueish,
+              textStyle: data["textWight"] == "bold"
+                  ? AppTextStyles.textMedium16mp600()
+                  : AppTextStyles.textMedium16mp400(),
+            );
+          }).toList(),
+        )
+      ],
+    );
+  }
+}
