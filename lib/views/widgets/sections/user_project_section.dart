@@ -16,7 +16,11 @@ class UserProjectSection extends GetView<HomeController> {
       mainAxisAlignment: MainAxisAlignment.start,
       mainAxisSize: MainAxisSize.min,
       children: [
-        HeadingWithLineUi(heading: "projects", lineWidth: Get.width <= 470 ? 100 : AppDimesions.px_225,),
+        HeadingWithLineUi(
+          heading: "projects",
+          lineWidth:
+              Get.width <= 470 ? AppDimesions.px_70 : AppDimesions.px_225,
+        ),
         const SizedBox(
           height: AppDimesions.px_10,
         ),
@@ -31,9 +35,10 @@ class UserProjectSection extends GetView<HomeController> {
               return UserProjectDataUi(
                   color: index % 2 != 0
                       ? AppColors.lightBlueish
-                      : AppColors.lightLightOrangish,
+                      : const Color.fromARGB(225, 255, 238, 217),
                   boxWidth: contraints.maxWidth,
                   projectTechUsed: data["projectTechUsed"],
+                  projectURL: data["projectURL"],
                   projectDevelopmentIn: data["projectDevelopmentIn"],
                   projectName: data["projectName"],
                   listOfImagesPath: data["listOfImagesPath"]);

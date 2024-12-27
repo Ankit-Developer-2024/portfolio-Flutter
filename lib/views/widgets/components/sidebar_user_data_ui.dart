@@ -27,12 +27,10 @@ class SidebarUserDataUi extends StatelessWidget {
                   width: AppDimesions.px_1, color: AppColors.lightBlackish))),
       child: Row(
         children: [
-          boxWidth <= 202
-              ? const SizedBox.shrink()
-              :  Icon(
-                  icon,
-                  color: AppColors.secondary,
-                ),
+          Icon(
+            icon,
+            color: AppColors.secondary,
+          ),
           const SizedBox(
             width: AppDimesions.px_10,
           ),
@@ -52,12 +50,11 @@ class SidebarUserDataUi extends StatelessWidget {
                   overflow: TextOverflow.ellipsis,
                   textAlign: TextAlign.start,
                 ),
-                Text(
+                SelectableText(
                   Utils.getString(subTitle),
                   style: AppTextStyles.textRegular14mp600(),
                   maxLines: 5,
-                  softWrap: true,
-                  overflow: TextOverflow.ellipsis,
+                  minLines: 1,
                   textAlign: TextAlign.start,
                 )
               ],

@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:protfolio/core/app/componetns/section_seperate_ui.dart';
+import 'package:protfolio/core/app/componetns/universal_toast_ui.dart';
+import 'package:protfolio/core/enum/app_enum.dart';
+import 'package:protfolio/core/styles/app_colors.dart';
+import 'package:protfolio/core/styles/app_dimesions.dart';
+import 'package:protfolio/core/styles/app_test_styles.dart';
 import 'package:protfolio/utils/utilty/utils.dart';
 import 'package:protfolio/views/widgets/sections/user_contact_section.dart';
 import 'package:protfolio/views/widgets/sections/user_experience_section.dart';
@@ -8,6 +13,9 @@ import 'package:protfolio/views/widgets/sections/user_home_section.dart';
 import 'package:protfolio/views/widgets/sections/user_project_section.dart';
 import 'package:protfolio/views/widgets/sections/user_resume_section.dart';
 import 'package:protfolio/views/widgets/sections/user_skills_section.dart';
+import 'package:toastification/toastification.dart';
+import 'package:universal_html/js.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class HomeController extends GetxController {
   RxBool lightThemeMode = true.obs;
@@ -15,6 +23,11 @@ class HomeController extends GetxController {
   TextEditingController nameController = TextEditingController();
   TextEditingController mailPhoneController = TextEditingController();
   TextEditingController messageController = TextEditingController();
+
+  String userLinkedInUrl = "www.linkedin.com/in/ankit-kumar-3850512b0";
+  String userGithubUrl = "github.com/Ankit-Developer-2024";
+  String userLocationUrl =
+      "www.google.com/maps/place/Hisar,+Haryana/@29.15639,75.5907228,11z/data=!3m1!4b1!4m6!3m5!1s0x391232d8011d0c37:0x1d3f0df105af1178!8m2!3d29.1491875!4d75.7216527!16zL20vMDN4eWx3?authuser=0&entry=ttu&g_ep=EgoyMDI0MTIxMS4wIKXMDSoASAFQAw%3D%3D";
 
   var themeMode = ThemeMode.light.obs;
 
@@ -110,6 +123,7 @@ class HomeController extends GetxController {
     {
       "projectName": "Portfolio",
       "projectTechUsed": "Flutter",
+      "projectURL": "",
       "projectDevelopmentIn": "Web Development",
       "listOfImagesPath": [
         "portfolio_img/portfolio_1.png",
@@ -123,6 +137,7 @@ class HomeController extends GetxController {
     {
       "projectName": "ShopMagnet - An online shoping platform",
       "projectTechUsed": "MERN Stack",
+      "projectURL": "ecom-backend-xi-seven.vercel.app/",
       "projectDevelopmentIn": "Web Development",
       "listOfImagesPath": [
         "ecom/ecom_1.png",
@@ -150,6 +165,7 @@ class HomeController extends GetxController {
       "projectName":
           "Server Load Tester - Test the server load by hit api multiple time",
       "projectTechUsed": "Flutter",
+      "projectURL": "api-time-three.vercel.app/",
       "projectDevelopmentIn": "Web Development",
       "listOfImagesPath": [
         "api/api_1.png",
@@ -217,6 +233,45 @@ class HomeController extends GetxController {
         themeMode.value == ThemeMode.light ? ThemeMode.dark : ThemeMode.light;
 
     lightThemeMode.value = !lightThemeMode.value;
+    return;
+  }
+
+  void goToSocialMedia(String? url) async {
+    if (url != null && url.isNotEmpty) {
+      final finalUrl = Uri.parse("https://$url");
+      if (!await launchUrl(finalUrl)) {
+        Get.snackbar("Get Some Error", "");
+      }
+    } else {
+      toast(
+          title: "This project is not hosted yet",
+          subTitle: "sub title",
+          icon: ToastIcon.info);
+    }
+  }
+
+  Future<void> makePhoneCall() async {
+    final Uri finalUrl = Uri(scheme: "tel", path: "8059650329");
+    if (!await launchUrl(finalUrl)) {
+      toast(
+          title: "Phone call not happen",
+          subTitle: "Check your system settings",
+          icon: ToastIcon.info);
+    }
+    return;
+  }
+
+  Future<void> sentMail() async {
+    final Uri finalUrl = Uri(
+      scheme: "mailto",
+      path: "kumar990ankit@gmail.com",
+    );
+    if (!await launchUrl(finalUrl)) {
+      toast(
+          title: "Gmail app not open",
+          subTitle: "Check your system settings",
+          icon: ToastIcon.info);
+    }
     return;
   }
 

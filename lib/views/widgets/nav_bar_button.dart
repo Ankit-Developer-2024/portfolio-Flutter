@@ -44,6 +44,7 @@ class NavBarButton extends GetView<HomeController> {
                           ? controller.changeHoveringItem(i)
                           : controller.changeHoveringItem(100);
                     },
+                    hoverColor: AppColors.darkModeColor,
                     child: Container(
                       padding: const EdgeInsets.symmetric(
                           horizontal: AppDimesions.px_16,

@@ -42,6 +42,13 @@ class AppTextStyles {
     );
   }
 
+  static textMedium20mp400({color = AppColors.black}) {
+    return GoogleFonts.aBeeZee(
+      textStyle:
+          TextStyle(fontSize: 20, color: color, fontWeight: FontWeight.w400),
+    );
+  }
+
   static textMedium30mpbold({color = AppColors.black}) {
     return GoogleFonts.aBeeZee(
       textStyle:

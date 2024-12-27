@@ -2,6 +2,8 @@
 
 A new Flutter project.
 
+Emailjs we use for email must --remeber
+
 ## Getting Started
 
 This project is a starting point for a Flutter application.

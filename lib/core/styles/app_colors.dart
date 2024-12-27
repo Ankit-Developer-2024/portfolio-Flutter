@@ -16,4 +16,10 @@ class AppColors {
   static const Color lightBlackish = Color(0xffE3E3E3);
   static const Color lightOrangish = Color(0xffFFEBD1);
   static const Color lightLightOrangish = Color(0xffFFEED9);
+
+    
+  static const Color success = Colors.green;
+  static const Color error = Colors.red;
+  static const Color info = Colors.blue;
+  static const Color warning = Colors.yellow;
 }

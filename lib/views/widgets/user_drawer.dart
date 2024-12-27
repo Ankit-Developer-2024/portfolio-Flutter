@@ -6,6 +6,7 @@ import 'package:protfolio/core/styles/app_test_styles.dart';
 import 'package:protfolio/utils/utilty/utils.dart';
 import 'package:protfolio/viewmodels/home_controller.dart';
 import 'package:protfolio/views/widgets/components/sidebar_user_data_ui.dart';
+import 'package:protfolio/views/widgets/components/user_and_social_media_ui.dart';
 
 class UserDrawer extends GetView<HomeController> {
   const UserDrawer({super.key});
@@ -53,63 +54,7 @@ class UserDrawer extends GetView<HomeController> {
                     mainAxisSize: MainAxisSize.max,
                     children: [
                       //user name
-                      Text(
-                        "Ankit Kumar",
-                        style: AppTextStyles.textMedium16mp600(),
-                        maxLines: 5,
-                        overflow: TextOverflow.ellipsis,
-                        textAlign: TextAlign.center,
-                      ),
-
-                      //user profile
-                      Text(
-                        "App and Web Developer",
-                        style: AppTextStyles.textRegular14mp400(),
-                        maxLines: 5,
-                        overflow: TextOverflow.ellipsis,
-                        textAlign: TextAlign.center,
-                      ),
-                      const SizedBox(
-                        height: AppDimesions.px_6,
-                      ),
-
-                      //Social media link
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Container(
-                            padding: const EdgeInsets.all(AppDimesions.px_6),
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(
-                                    AppDimesions.radius_6),
-                                color: AppColors.lightBlueish),
-                            child: InkWell(
-                              onTap: () {},
-                              child: Image.asset(Utils.getIcons("linkedin.png"),
-                                  width: AppDimesions.size_25,
-                                  height: AppDimesions.size_25),
-                            ),
-                          ),
-                          const SizedBox(
-                            width: AppDimesions.px_4,
-                          ),
-                          Container(
-                            padding: const EdgeInsets.all(AppDimesions.px_6),
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(
-                                    AppDimesions.radius_6),
-                                color: AppColors.lightBlueish),
-                            child: InkWell(
-                              onTap: () {},
-                              child: Image.asset(
-                                Utils.getIcons("github.png"),
-                                width: AppDimesions.size_25,
-                                height: AppDimesions.size_25,
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
+                      const UserAndSocialMediaUi(),
 
                       //user location(address)
                       const SizedBox(
@@ -134,65 +79,89 @@ class UserDrawer extends GetView<HomeController> {
                           mainAxisAlignment: MainAxisAlignment.start,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            SidebarUserDataUi(
-                                boxWidth: constraints.maxWidth - 135,
-                                icon: Icons.phone_android_outlined,
-                                titile: "phone",
-                                subTitle: "phone_no"),
-                            SidebarUserDataUi(
-                                boxWidth: constraints.maxWidth - 135,
-                                icon: Icons.mail,
-                                titile: "email",
-                                subTitle: "user_email"),
-                            SidebarUserDataUi(
-                                boxWidth: constraints.maxWidth - 135,
-                                icon: Icons.location_on_outlined,
-                                titile: "location",
-                                subTitle: "user_location"),
+                            InkWell(
+                              onTap: () {
+                                controller.makePhoneCall();
+                              },
+                              child: SidebarUserDataUi(
+                                  boxWidth: constraints.maxWidth - 140,
+                                  icon: Icons.phone_android_outlined,
+                                  titile: "phone",
+                                  subTitle: "phone_no"),
+                            ),
+                            InkWell(
+                              onTap: () {
+                                controller.sentMail();
+                              },
+                              child: SidebarUserDataUi(
+                                  boxWidth: constraints.maxWidth - 140,
+                                  icon: Icons.mail,
+                                  titile: "email",
+                                  subTitle: "user_email"),
+                            ),
+                            InkWell(
+                              onTap: () {
+                                controller.goToSocialMedia(
+                                    controller.userLocationUrl);
+                              },
+                              hoverColor: AppColors.darkModeColor,
+                              
+                              child: SidebarUserDataUi(
+                                  boxWidth: constraints.maxWidth - 140,
+                                  icon: Icons.location_on_outlined,
+                                  titile: "location",
+                                  subTitle: "user_location"),
+                            ),
                             const SizedBox(
                               height: AppDimesions.px_8,
                             ),
-                            Container(
-                              padding: const EdgeInsets.all(AppDimesions.px_1),
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(
-                                      AppDimesions.radius_70),
-                                  gradient: const LinearGradient(colors: [
-                                    AppColors.primary,
-                                    AppColors.secondary
-                                  ])),
-                              child: TextButton(
-                                  onPressed: () {},
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      const Icon(
-                                        Icons.download,
-                                        color: AppColors.lightBlueish,
-                                      ),
-                                      const SizedBox(
-                                        width: AppDimesions.px_8,
-                                      ),
-                                      Text(
-                                        Utils.getString("download"),
-                                        textAlign: TextAlign.center,
-                                        style: AppTextStyles.textRegular14mp400(
-                                            color: AppColors.lightBlueish),
-                                        maxLines: 5,
-                                        softWrap: true,
-                                        overflow: TextOverflow.ellipsis,
-                                      ),
-                                      Text(
-                                        Utils.getString("resume"),
-                                        textAlign: TextAlign.center,
-                                        style: AppTextStyles.textRegular14mp400(
-                                            color: AppColors.lightBlueish),
-                                        maxLines: 5,
-                                        softWrap: true,
-                                        overflow: TextOverflow.ellipsis,
-                                      )
-                                    ],
-                                  )),
+                            InkWell(
+                              onTap: () {
+                                Utils.downloadPdf();
+                              },
+                              child: Container(
+                                padding: const EdgeInsets.symmetric(
+                                    vertical: AppDimesions.px_4,
+                                    horizontal: AppDimesions.px_8),
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(
+                                        AppDimesions.radius_70),
+                                    gradient: const LinearGradient(colors: [
+                                      AppColors.primary,
+                                      AppColors.secondary
+                                    ])),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    const Icon(
+                                      Icons.download,
+                                      color: AppColors.lightBlueish,
+                                      size: AppDimesions.size_20,
+                                    ),
+                                    const SizedBox(
+                                      width: AppDimesions.px_8,
+                                    ),
+                                    Text(
+                                      Utils.getString("download"),
+                                      textAlign: TextAlign.center,
+                                      style: AppTextStyles.textRegular14mp400(
+                                          color: AppColors.lightBlueish),
+                                      maxLines: 5,
+                                      softWrap: true,
+                                      overflow: TextOverflow.ellipsis,
+                                    ),
+                                    Text(
+                                      Utils.getString("resume"),
+                                      textAlign: TextAlign.center,
+                                      style: AppTextStyles.textRegular14mp400(
+                                          color: AppColors.lightBlueish),
+                                      maxLines: 5,
+                                      softWrap: true,
+                                      overflow: TextOverflow.ellipsis,
+                                    )
+                                  ],
+                                ),
+                              ),
                             )
                           ],
                         ),

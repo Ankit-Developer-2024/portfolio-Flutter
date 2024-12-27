@@ -12,6 +12,7 @@ class HomeView extends StatelessWidget {
   Widget build(BuildContext context) {
     Get.put(HomeController());
     return ScreenTypeLayout.builder(
+      
       desktop: (_) => const HomeDesktopScreen(),
       tablet: (_) => const HomeDesktopScreen(),
       mobile: (_) =>  HomeMobileScreen(),

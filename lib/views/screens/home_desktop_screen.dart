@@ -30,7 +30,7 @@ class HomeDesktopScreen extends StatelessWidget {
                 return Column(
                   children: [
                     constraints.maxWidth <= 730
-                        ? TopBar()
+                        ? const TopBar()
                         : const SizedBox.shrink(),
                     const SizedBox(
                       width: AppDimesions.px_16,
