@@ -24680,7 +24680,7 @@ n=A.b([A.ao(["skillName","App Development","skillImagePath","app_development.png
 m=t.s
 l=A.b(["Flutter","Dart","Git","React.js","Node.js","Express.js","MongoDB","HTML","CSS","JavaScript","C++","OOPS"],m)
 o=A.b([A.ao(["projectName","Portfolio","projectTechUsed","Flutter","projectURL","",j,"Web Development",i,A.b(["portfolio_img/portfolio_1.png","portfolio_img/portfolio_2.png","portfolio_img/portfolio_3.png","portfolio_img/portfolio_4.png","portfolio_img/portfolio_5.png","portfolio_img/portfolio_7.png"],m)],q,p),A.ao(["projectName","ShopMagnet - An online shoping platform","projectTechUsed","MERN Stack","projectURL","ecom-backend-xi-seven.vercel.app/",j,"Web Development",i,A.b(["ecom/ecom_1.png","ecom/ecom_2.png","ecom/ecom_3.png","ecom/ecom_4.png","ecom/ecom_5.png","ecom/ecom_7.png","ecom/ecom_8.png","ecom/ecom_9.png","ecom/ecom_10.png","ecom/ecom_11.png","ecom/ecom_12.png","ecom/ecom_13.png","ecom/ecom_14.png","ecom/ecom_15.png","ecom/ecom_16.png","ecom/ecom_17.png","ecom/ecom_18.png","ecom/ecom_19.png","ecom/ecom_20.png"],m)],q,p),A.ao(["projectName","Server Load Tester - Test the server load by hit api multiple time","projectTechUsed","Flutter","projectURL","api-time-three.vercel.app/",j,"Web Development",i,A.b(["api/api_1.png","api/api_2.png","api/api_3.png","api/api_4.png","api/api_5.png","api/api_7.png","api/api_8.png","api/api_9.png","api/api_10.png"],m)],q,p)],o)
-m=A.b([A.b(["Home","/icons/home.png"],m),A.b(["Experience","/icons/experience.png"],m),A.b(["Skills","/icons/skills.png"],m),A.b(["Projects","/icons/projects.png"],m),A.b(["Resume","/icons/resume.png"],m),A.b(["Contact","/icons/contact.png"],m)],t.rj)
+m=A.b([A.b(["Home","icons/home.png"],m),A.b(["Experience","icons/experience.png"],m),A.b(["Skills","icons/skills.png"],m),A.b(["Projects","icons/projects.png"],m),A.b(["Resume","icons/resume.png"],m),A.b(["Contact","icons/contact.png"],m)],t.rj)
 g=new A.AE($,!0,!1,new A.es(A.b([],t.UY),t.zW),A.w(h,g),t.PG)
 g.eF$=A.iH(m,!0,t.yp)
 m=t.Wo
@@ -81694,7 +81694,7 @@ $2(a,b){var s,r,q,p,o=null,n=this.a
 if(n.r)s=b.b
 else{s=b.b
 s=s<550?s-10:s/3-11}r=A.bL(6)
-q=A.mn("/icons/"+n.c,o,o,25,25)
+q=A.mn("icons/"+n.c,o,o,25,25)
 p=n.e
 if(p==null)p=A.je(B.j,B.be)
 return A.bo(o,A.dz(A.b([q,B.yw,new A.yc(1,B.GI,A.bB(n.d,5,B.W,o,!0,p,o,o),o)],t.p),B.U,B.t,B.a4),B.m,o,o,new A.ba(n.f,o,o,r,o,o,B.v),o,o,o,B.j8,s)},
@@ -81877,10 +81877,10 @@ q=A.AT("Ankit Kumar",5,1,A.rd((r==null?$.G=B.l:r).ak(0,l,s).ax.gl(0)?B.cq:B.i),B
 r=$.G
 p=A.AT("Flutter and MERN Stack Developer",5,1,A.je((r==null?$.G=B.l:r).ak(0,l,s).ax.gl(0)?B.cq:B.i,B.be),B.bG)
 o=A.bL(6)
-o=A.dU(!1,l,!0,A.bo(l,A.mn("/icons/linkedin.png",l,l,25,25),B.m,l,l,new A.ba(B.a3,l,l,o,l,l,B.v),l,l,l,B.jd,l),l,!0,l,l,l,l,l,l,l,l,l,new A.ahZ(),l,l,l,l)
+o=A.dU(!1,l,!0,A.bo(l,A.mn("icons/linkedin.png",l,l,25,25),B.m,l,l,new A.ba(B.a3,l,l,o,l,l,B.v),l,l,l,B.jd,l),l,!0,l,l,l,l,l,l,l,l,l,new A.ahZ(),l,l,l,l)
 n=A.bL(6)
 m=t.p
-return A.cc(A.b([q,p,B.eJ,A.dz(A.b([o,B.hH,A.dU(!1,l,!0,A.bo(l,A.mn("/icons/github.png",l,l,25,25),B.m,l,l,new A.ba(B.a3,l,l,n,l,l,B.v),l,l,l,B.jd,l),l,!0,l,l,l,l,l,l,l,l,l,new A.ai_(),l,l,l,l)],m),B.F,B.er,B.H)],m),B.F,B.t,B.H)},
+return A.cc(A.b([q,p,B.eJ,A.dz(A.b([o,B.hH,A.dU(!1,l,!0,A.bo(l,A.mn("icons/github.png",l,l,25,25),B.m,l,l,new A.ba(B.a3,l,l,n,l,l,B.v),l,l,l,B.jd,l),l,!0,l,l,l,l,l,l,l,l,l,new A.ai_(),l,l,l,l)],m),B.F,B.er,B.H)],m),B.F,B.t,B.H)},
 $S:65}
 A.ahZ.prototype={
 $0(){var s,r,q
@@ -81987,7 +81987,7 @@ A.ail.prototype={
 $1(a){return new A.dh(new A.aik(a),null)},
 $S:512}
 A.aik.prototype={
-$1(a){return A.ks(A.bL(8),A.mn("/images/"+this.a,null,B.eY,null,null))},
+$1(a){return A.ks(A.bL(8),A.mn("images/"+this.a,null,B.eY,null,null))},
 $S:513}
 A.qv.prototype={
 G(a){var s,r,q,p=this,o=null,n=p.r
@@ -82170,7 +82170,7 @@ return A.bB(q,r,r,r,r,A.awO(s.ak(0,r,t.c).ax.gl(0)?B.j:B.i),r,r)},
 $S:67}
 A.aij.prototype={
 $2(a,b){var s=null,r=b.b,q=r<550,p=q?r-10:r/2-10,o=A.bL(8),n=t.p
-p=A.bo(s,A.cc(A.b([A.dz(A.b([A.mn("/icons/app_development.png",s,s,25,25),A.bB(A.bi("app_development"),s,s,s,s,A.rd(B.j),s,s)],n),B.F,B.t,B.H),A.bB(A.bi("user_app_development"),s,s,s,s,A.hA(B.j),s,s)],n),B.F,B.t,B.H),B.m,s,s,new A.ba(B.iK,s,s,o,s,s,B.v),s,s,s,B.jb,p)
+p=A.bo(s,A.cc(A.b([A.dz(A.b([A.mn("icons/app_development.png",s,s,25,25),A.bB(A.bi("app_development"),s,s,s,s,A.rd(B.j),s,s)],n),B.F,B.t,B.H),A.bB(A.bi("user_app_development"),s,s,s,s,A.hA(B.j),s,s)],n),B.F,B.t,B.H),B.m,s,s,new A.ba(B.iK,s,s,o,s,s,B.v),s,s,s,B.jb,p)
 r=q?r-10:r/2-10
 q=A.bL(8)
 return A.Ck(B.aS,A.b([p,B.hF,A.bo(s,A.cc(A.b([A.dz(A.b([A.bB("</>",s,s,s,s,A.rd(B.bc),s,s),B.hH,A.bB(A.bi("web_development"),s,s,s,s,A.rd(B.j),s,s)],n),B.F,B.t,B.H),A.bB(A.bi("user_web_development"),s,s,s,s,A.hA(B.j),s,s)],n),B.F,B.t,B.H),B.m,s,s,new A.ba(B.a3,s,s,q,s,s,B.v),s,s,s,B.jb,r)],n),B.ap,B.aS,10,4)},
@@ -82320,7 +82320,7 @@ $0(){A.Ce()},
 $S:0}
 A.OK.prototype={
 G(a){var s=null,r=A.m1(B.bc,2),q=A.bL(8)
-return A.jS(B.cY,A.b([new A.ev(new A.ahC(this),s),A.bo(s,A.ks(A.bL(6),A.mn("/images/user.jpg",s,B.eY,s,s)),B.m,s,s,new A.ba(s,s,r,q,s,s,B.v),60,s,s,s,60)],t.p),B.T,B.bF)}}
+return A.jS(B.cY,A.b([new A.ev(new A.ahC(this),s),A.bo(s,A.ks(A.bL(6),A.mn("images/user.jpg",s,B.eY,s,s)),B.m,s,s,new A.ba(s,s,r,q,s,s,B.v),60,s,s,s,60)],t.p),B.T,B.bF)}}
 A.ahC.prototype={
 $2(a,b){return new A.cN(new A.ahB(this.a,b),null)},
 $S:525}
@@ -82363,7 +82363,7 @@ $0(){A.Ce()},
 $S:0}
 A.P2.prototype={
 G(a){var s=null,r=A.m1(B.bc,2),q=A.bL(8)
-return new A.Jq(new A.ci(B.Gb,A.jS(B.ia,A.b([new A.ev(new A.aie(this),s),A.bo(s,A.ks(A.bL(6),A.mn("/images/user.jpg",s,B.eY,s,s)),B.m,s,s,new A.ba(s,s,r,q,s,s,B.v),100,s,s,s,100)],t.p),B.T,B.bF),s),s)}}
+return new A.Jq(new A.ci(B.Gb,A.jS(B.ia,A.b([new A.ev(new A.aie(this),s),A.bo(s,A.ks(A.bL(6),A.mn("images/user.jpg",s,B.eY,s,s)),B.m,s,s,new A.ba(s,s,r,q,s,s,B.v),100,s,s,s,100)],t.p),B.T,B.bF),s),s)}}
 A.aie.prototype={
 $2(a,b){return A.afl(new A.cN(new A.aid(this.a,b),null))},
 $S:200}
