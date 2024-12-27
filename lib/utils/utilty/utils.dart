@@ -12,11 +12,11 @@ class Utils {
   }
 
   static String getIcons(String icon) {
-    return "icons/$icon";
+    return "assets/icons/$icon";
   }
 
   static String getImages(String image) {
-    return "images/$image";
+    return "assets/images/$image";
   }
 
   static Future<void> downloadPdf() async {
