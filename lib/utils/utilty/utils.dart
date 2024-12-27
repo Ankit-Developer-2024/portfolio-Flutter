@@ -43,7 +43,12 @@ class Utils {
       final url = html.Url.createObjectUrlFromBlob(blob);
 
       // Create a link element and trigger the download
-      final anchor = html.AnchorElement(href: url)
+      // final anchor = html.AnchorElement(href: url)
+      //   ..target = 'blank'
+      //   ..download = 'Ankit-Resume.pdf' // Suggested filename
+      //   ..click();
+
+      html.AnchorElement(href: url)
         ..target = 'blank'
         ..download = 'Ankit-Resume.pdf' // Suggested filename
         ..click();
@@ -52,10 +57,11 @@ class Utils {
       html.Url.revokeObjectUrl(url);
 
       toast(
-          title: "Resume Download Successfully",
-          icon: ToastIcon.success,
-          subTitle: "Contact me if you like my skill.",
-          toastDir: Alignment.topLeft);
+        title: "Resume Download Successfully",
+        icon: ToastIcon.success,
+        subTitle: "Contact me if you like my skill.",
+        toastDir: Alignment.topLeft,
+      );
     } catch (e) {
       toast(
           title: "Resume not Download",

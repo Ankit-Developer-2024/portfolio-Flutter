@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_navigation/src/routes/default_transitions.dart';
 import 'package:protfolio/core/enum/app_enum.dart';
 import 'package:protfolio/core/styles/app_colors.dart';
 import 'package:protfolio/core/styles/app_dimesions.dart';
 import 'package:protfolio/core/styles/app_test_styles.dart';
-import 'package:protfolio/utils/utilty/utils.dart';
 import 'package:protfolio/viewmodels/home_controller.dart';
 import 'package:toastification/toastification.dart';
 

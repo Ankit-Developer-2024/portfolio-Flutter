@@ -7,7 +7,6 @@ import 'package:protfolio/utils/utilty/utils.dart';
 import 'package:protfolio/viewmodels/home_controller.dart';
 import 'package:protfolio/views/widgets/components/sideBar_user_data_ui.dart';
 import 'package:protfolio/views/widgets/components/user_and_social_media_ui.dart';
-import 'package:toastification/toastification.dart';
 
 class SideBar extends GetView<HomeController> {
   const SideBar({super.key});
@@ -178,8 +177,8 @@ class SideBar extends GetView<HomeController> {
             child: ClipRRect(
               borderRadius: BorderRadius.circular(AppDimesions.radius_6),
               child: Image.asset(
-                Utils.getImages("user.jpeg"),
-                fit: BoxFit.fill,
+                Utils.getImages("user.jpg"),
+                fit: BoxFit.cover,
               ),
             ),
           ),

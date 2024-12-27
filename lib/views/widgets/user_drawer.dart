@@ -105,7 +105,6 @@ class UserDrawer extends GetView<HomeController> {
                                     controller.userLocationUrl);
                               },
                               hoverColor: AppColors.darkModeColor,
-                              
                               child: SidebarUserDataUi(
                                   boxWidth: constraints.maxWidth - 140,
                                   icon: Icons.location_on_outlined,
@@ -183,8 +182,8 @@ class UserDrawer extends GetView<HomeController> {
             child: ClipRRect(
               borderRadius: BorderRadius.circular(AppDimesions.radius_6),
               child: Image.asset(
-                Utils.getImages("user.jpeg"),
-                fit: BoxFit.fill,
+                Utils.getImages("user.jpg"),
+                fit: BoxFit.cover,
               ),
             ),
           ),

@@ -152,8 +152,8 @@ class TopBar extends GetView<HomeController> {
           child: ClipRRect(
             borderRadius: BorderRadius.circular(AppDimesions.radius_6),
             child: Image.asset(
-              Utils.getImages("user.jpeg"),
-              fit: BoxFit.fill,
+              Utils.getImages("user.jpg"),
+               fit: BoxFit.cover,
             ),
           ),
         ),

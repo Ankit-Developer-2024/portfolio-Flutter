@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:protfolio/core/styles/app_colors.dart';
 import 'package:protfolio/core/styles/app_dimesions.dart';
 import 'package:protfolio/core/styles/app_test_styles.dart';
