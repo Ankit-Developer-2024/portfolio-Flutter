@@ -82273,7 +82273,7 @@ return new A.fV(q,p,J.d(r.i(s,"textWight"),"bold")?A.hz(B.j):A.je(B.j,B.be),o,!1
 $S:523}
 A.Ny.prototype={
 G(a){var s=null,r=A.m1(B.bc,2),q=A.bL(8)
-return new A.ci(B.Gf,A.jS(B.ia,A.b([new A.ev(new A.afh(this),s),A.bo(s,A.ks(A.bL(6),A.mn("/images/user.jpg",s,B.eY,s,s)),B.m,s,s,new A.ba(s,s,r,q,s,s,B.v),100,s,s,s,100)],t.p),B.T,B.bF),s)}}
+return new A.ci(B.Gf,A.jS(B.ia,A.b([new A.ev(new A.afh(this),s),A.bo(s,A.ks(A.bL(6),A.mn("assets/images/user.jpg",s,B.eY,s,s)),B.m,s,s,new A.ba(s,s,r,q,s,s,B.v),100,s,s,s,100)],t.p),B.T,B.bF),s)}}
 A.afh.prototype={
 $2(a,b){return A.afl(new A.cN(new A.afg(this.a,b),null))},
 $S:200}
