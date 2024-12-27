@@ -20,32 +20,29 @@ class UserSection extends GetView<HomeController> {
             height: AppDimesions.px_16,
           ),
           Text(
-            controller.navBarButtonHoverIndex.toString(),
+            controller.navBarButtonHoverIndex.value.toString(),
             style: const TextStyle(fontSize: 0),
           ),
           NavBarButton(),
           const SizedBox(
             height: AppDimesions.px_10,
           ),
-          Obx(
-            () => Container(
-                width: double.maxFinite,
-                padding: const EdgeInsets.symmetric(
-                    vertical: AppDimesions.px_16,
-                    horizontal: AppDimesions.px_16),
-                decoration: BoxDecoration(
+          Container(
+              width: double.maxFinite,
+              padding: const EdgeInsets.symmetric(
+                  vertical: AppDimesions.px_16, horizontal: AppDimesions.px_16),
+              decoration: BoxDecoration(
+                  color: controller.lightThemeMode.value
+                      ? AppColors.white
+                      : AppColors.mediumBlue,
+                  borderRadius: BorderRadius.circular(AppDimesions.radius_8),
+                  border: Border.all(
                     color: controller.lightThemeMode.value
-                        ? AppColors.white
-                        : AppColors.mediumBlue,
-                    borderRadius: BorderRadius.circular(AppDimesions.radius_8),
-                    border: Border.all(
-                      color: controller.lightThemeMode.value
-                          ? AppColors.lightBlackish
-                          : AppColors.primary,
-                    )),
-                child: controller.getUserSection(
-                    controller.navBarButtonSelectedIndex.value)),
-          ),
+                        ? AppColors.lightBlackish
+                        : AppColors.primary,
+                  )),
+              child: controller
+                  .getUserSection(controller.navBarButtonSelectedIndex.value)),
         ],
       ),
     );
