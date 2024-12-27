@@ -3,9 +3,7 @@ import 'package:get/get.dart';
 import 'package:protfolio/core/app/componetns/section_seperate_ui.dart';
 import 'package:protfolio/core/app/componetns/universal_toast_ui.dart';
 import 'package:protfolio/core/enum/app_enum.dart';
-import 'package:protfolio/core/styles/app_colors.dart';
-import 'package:protfolio/core/styles/app_dimesions.dart';
-import 'package:protfolio/core/styles/app_test_styles.dart';
+import 'package:protfolio/services/send_email_services.dart';
 import 'package:protfolio/utils/utilty/utils.dart';
 import 'package:protfolio/views/widgets/sections/user_contact_section.dart';
 import 'package:protfolio/views/widgets/sections/user_experience_section.dart';
@@ -13,8 +11,6 @@ import 'package:protfolio/views/widgets/sections/user_home_section.dart';
 import 'package:protfolio/views/widgets/sections/user_project_section.dart';
 import 'package:protfolio/views/widgets/sections/user_resume_section.dart';
 import 'package:protfolio/views/widgets/sections/user_skills_section.dart';
-import 'package:toastification/toastification.dart';
-import 'package:universal_html/js.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class HomeController extends GetxController {
@@ -326,19 +322,16 @@ class HomeController extends GetxController {
     }
   }
 
-  void userFormData() {
+  void userFormData() async {
     if (!formKey.currentState!.validate()) {
       return;
     }
-    print(nameController.text);
-    print(messageController.text);
-    print(mailPhoneController.text);
+
+    await SendEmailServices.sendMail(
+        name: nameController.text,
+        email: mailPhoneController.text,
+        message: messageController.text);
 
     return;
-  }
-
-  @override
-  void onInit() {
-    super.onInit();
   }
 }

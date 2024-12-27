@@ -56,7 +56,7 @@ class UserContactForm extends GetView<HomeController> {
                     controller: controller.mailPhoneController,
                     autovalidateMode: AutovalidateMode.onUserInteraction,
                     decoration: InputDecoration(
-                        labelText: "Phone/Mail: ",
+                        labelText: "Phone/E-Mail: ",
                         labelStyle: AppTextStyles.textMedium16mp600(
                           color: controller.lightThemeMode.value
                               ? AppColors.black
@@ -64,7 +64,10 @@ class UserContactForm extends GetView<HomeController> {
                         )),
                     validator: (value) {
                       if (value == null || value.isEmpty) {
-                        return "Please enter your Phone Number / Mail.";
+                        return "Please enter your Phone No./E-Mail.";
+                      }
+                      if (!value.contains("@") && value.length >= 10) {
+                        return "Please enter vaild 10-digit mobile number";
                       }
                       return null;
                     },
