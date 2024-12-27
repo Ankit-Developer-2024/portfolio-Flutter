@@ -177,7 +177,7 @@ class SideBar extends GetView<HomeController> {
             child: ClipRRect(
               borderRadius: BorderRadius.circular(AppDimesions.radius_6),
               child: Image.asset(
-                Utils.getImages("user.jpg"),
+                "assets/images/user.jpg",
                 fit: BoxFit.cover,
               ),
             ),
