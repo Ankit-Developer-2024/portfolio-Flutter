@@ -29,6 +29,7 @@ class UserSection extends GetView<HomeController> {
           ),
           Container(
               width: double.maxFinite,
+              margin: const EdgeInsets.only(bottom: AppDimesions.px_4),
               padding: const EdgeInsets.symmetric(
                   vertical: AppDimesions.px_16, horizontal: AppDimesions.px_16),
               decoration: BoxDecoration(

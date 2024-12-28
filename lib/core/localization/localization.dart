@@ -28,11 +28,15 @@ class Localization extends Translations {
               """Recent Computer Science graduate with hands-on experience in mobile development using Flutter. Proficient in JavaScript, Node.js, and Dart, alongside version control systems like Git. Demonstratesstrong testing skills and familiarity with frameworks such as React.js and Flutter. Committed to continuous learning and mastering emerging technologies.""",
           "what_i_do": "What I do!",
           "app_development": "App Development",
-          "user_app_development":
-              "I am an experienced Flutter app developer skilled in creating cross-platform mobile applications using Flutter and Dart. I have worked extensively on UI/UX design, API integration, and state management using tools like GetX. My contributions include enhancing the design and functionality of apps like Just Fresh and Just Retailer, ensuring seamless performance and user satisfaction.",
+          "user_app_development_part1":
+              "I am an experienced Flutter app developer skilled in creating cross-platform mobile applications using",
+          "user_app_development_part2":" Flutter and Dart. ",
+          "user_app_development_part3":"I have worked extensively on UI/UX design, API integration, and state management using tools like GetX. My contributions include enhancing the design and functionality of apps like Just Fresh and Just Retailer, ensuring seamless performance and user satisfaction.",
           "web_development": "Web Development",
-          "user_web_development":
-              "I am a web developer proficient in the MERN stack, including MongoDB, Express.js, React, and Node.js. I specialize in creating responsive and dynamic web applications, integrating APIs, and managing backend operations. My expertise includes building scalable, full-stack solutions, designing websites using Flutter for cross-platform compatibility, and ensuring seamless user experiences.",
+          "user_web_development_part1":
+              "I am a web developer proficient in the MERN stack, including",
+          "user_web_development_part2":" MongoDB, Express.js, React, and Node.js ", 
+          "user_web_development_part3":"I specialize in creating responsive and dynamic web applications, integrating APIs, and managing backend operations. My expertise includes building scalable, full-stack solutions, designing websites using Flutter for cross-platform compatibility, and ensuring seamless user experiences.", 
           "experience": "Experience",
           "education": "Education",
           "gju": "Guru Jambheshwar University of Science & Technology , Hisar",
@@ -43,18 +47,19 @@ class Localization extends Translations {
           "aps": "Adarsh Public Sr. Sec. School , Fatehabad , Haryana",
           "work_skills": "Work Skills",
           "phone_:": "Phone :",
-          "mail_:":"Main :",
-          "form_heading":"I am always open to discussing new projects, opportunities in tech world, partnerships and more so mentorship.",
-          "sumbit":"Sumbit",
+          "mail_:": "Main :",
+          "form_heading":
+              "I am always open to discussing new projects, opportunities in tech world, partnerships and more so mentorship.",
+          "sumbit": "Sumbit",
 
-            //Experience
-            "flutter_developer": "Flutter Developer",
+          //Experience
+          "flutter_developer": "Flutter Developer",
           "sde_1": "SDE-I",
           "2024": "2024",
           "company_krishiacharya": "Krishiacharya Technologies Pvt. Ltd.",
           "company_krishiacharya_with_location":
               "Krishiacharya Technologies Pvt. Ltd. Gurugram , India",
-          "location_gurugram.": "Gurugram",
+          "location_gurugram": "Gurugram",
           "sde_1_point_1":
               "Worked on modular Warehouse Management App with features for order management, return tracking, and QR code scanning to enhance workflow efficiency. Streamlined order processing and implemented product dumping based on quality checks, significantly improving warehouse operations.",
           "sde_1_point_2":

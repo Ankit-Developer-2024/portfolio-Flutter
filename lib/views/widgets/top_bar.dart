@@ -12,12 +12,12 @@ class TopBar extends GetView<HomeController> {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      alignment: Alignment.centerLeft,
-      children: [
-        LayoutBuilder(builder: (context, constraints) {
-          return Obx(
-            () => Container(
+    return Obx(
+      () => Stack(
+        alignment: Alignment.centerLeft,
+        children: [
+          LayoutBuilder(builder: (context, constraints) {
+            return Container(
               width: constraints.maxWidth - AppDimesions.size_25,
               margin: const EdgeInsets.only(
                 left: AppDimesions.px_24,
@@ -139,25 +139,39 @@ class TopBar extends GetView<HomeController> {
                   )
                 ],
               ),
-            ),
-          );
-        }),
-        Container(
-          width: AppDimesions.size_60,
-          height: AppDimesions.size_60,
-          decoration: BoxDecoration(
-              border: Border.all(
-                  color: AppColors.primary, width: AppDimesions.px_2),
-              borderRadius: BorderRadius.circular(AppDimesions.radius_8)),
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(AppDimesions.radius_6),
-            child: Image.asset(
-              Utils.getImages("user.jpg"),
-               fit: BoxFit.cover,
+            );
+          }),
+          InkWell(
+            onTap: () {},
+            onHover: (value) {
+              controller.isUserImgHover.value = value;
+            },
+            child: AnimatedContainer(
+              duration: const Duration(seconds: 1),
+              width: controller.isUserImgHover.value
+                  ? AppDimesions.size_80
+                  : AppDimesions.size_60,
+              height: controller.isUserImgHover.value
+                  ? AppDimesions.size_80
+                  : AppDimesions.size_60,
+              decoration: BoxDecoration(
+                  border: Border.all(
+                      color: controller.lightThemeMode.value
+                          ? AppColors.lightBlackish
+                          : AppColors.primary,
+                      width: AppDimesions.px_1),
+                  borderRadius: BorderRadius.circular(AppDimesions.radius_8)),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(AppDimesions.radius_6),
+                child: Image.asset(
+                  Utils.getImages("user.jpg"),
+                  fit: BoxFit.cover,
+                ),
+              ),
             ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

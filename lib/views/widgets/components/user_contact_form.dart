@@ -36,6 +36,8 @@ class UserContactForm extends GetView<HomeController> {
                     controller: controller.nameController,
                     autovalidateMode: AutovalidateMode.onUserInteraction,
                     decoration: InputDecoration(
+                        errorStyle: AppTextStyles.textRegular14mp400(
+                            color: AppColors.secondary),
                         labelText: "Name: ",
                         labelStyle: AppTextStyles.textMedium16mp600(
                           color: controller.lightThemeMode.value
@@ -56,6 +58,8 @@ class UserContactForm extends GetView<HomeController> {
                     controller: controller.mailPhoneController,
                     autovalidateMode: AutovalidateMode.onUserInteraction,
                     decoration: InputDecoration(
+                        errorStyle: AppTextStyles.textRegular14mp400(
+                            color: AppColors.secondary),
                         labelText: "Phone/E-Mail: ",
                         labelStyle: AppTextStyles.textMedium16mp600(
                           color: controller.lightThemeMode.value
@@ -66,8 +70,14 @@ class UserContactForm extends GetView<HomeController> {
                       if (value == null || value.isEmpty) {
                         return "Please enter your Phone No./E-Mail.";
                       }
-                      if (!value.contains("@") && value.length >= 10) {
-                        return "Please enter vaild 10-digit mobile number";
+                      if (!value.contains("@") && value.length > 10) {
+                        const str =
+                            "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+                        if (str.contains(value[value.length - 1])) {
+                          return "Please enter a valid E-mail";
+                        } else {
+                          return "Please enter vaild 10-digit mobile number";
+                        }
                       }
                       return null;
                     },
@@ -79,6 +89,8 @@ class UserContactForm extends GetView<HomeController> {
                     controller: controller.messageController,
                     autovalidateMode: AutovalidateMode.onUserInteraction,
                     decoration: InputDecoration(
+                        errorStyle: AppTextStyles.textRegular14mp400(
+                            color: AppColors.secondary),
                         labelText: "Message: ",
                         labelStyle: AppTextStyles.textMedium16mp600(
                           color: controller.lightThemeMode.value

@@ -4,6 +4,7 @@ import 'package:protfolio/core/app/componetns/bullet_list.dart';
 import 'package:protfolio/core/styles/app_colors.dart';
 import 'package:protfolio/core/styles/app_dimesions.dart';
 import 'package:protfolio/core/styles/app_test_styles.dart';
+import 'package:protfolio/utils/utilty/utils.dart';
 import 'package:protfolio/viewmodels/home_controller.dart';
 
 class UserExperienceDataUi extends GetView<HomeController> {
@@ -85,7 +86,7 @@ class UserExperienceDataUi extends GetView<HomeController> {
                     baseline: TextBaseline.alphabetic,
                     child: SizedBox(width: 10)),
                 TextSpan(
-                  text: companyLocation,
+                  text: Utils.getString(companyLocation),
                 )
               ])),
           const SizedBox(

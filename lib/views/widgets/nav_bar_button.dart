@@ -13,7 +13,7 @@ class NavBarButton extends GetView<HomeController> {
   Widget build(BuildContext context) {
     return Obx(
       () => Container(
-        height: AppDimesions.px_98,
+          height: AppDimesions.size_105,
         padding: const EdgeInsets.all(AppDimesions.px_16),
         decoration: BoxDecoration(
             color: controller.lightThemeMode.value
@@ -44,7 +44,8 @@ class NavBarButton extends GetView<HomeController> {
                       : controller.changeHoveringItem(100);
                 },
                 hoverColor: AppColors.darkModeColor,
-                child: Container(
+                child: AnimatedContainer(
+                  duration: const Duration(seconds: 1),
                   padding: const EdgeInsets.symmetric(
                       horizontal: AppDimesions.px_16,
                       vertical: AppDimesions.px_8),
@@ -62,8 +63,14 @@ class NavBarButton extends GetView<HomeController> {
                   child: Column(
                     children: [
                       Image.asset(data[1],
-                          width: AppDimesions.size_20,
-                          height: AppDimesions.size_20,
+                          width:
+                              controller.isHovering(i) || controller.isActive(i)
+                                  ? AppDimesions.size_25
+                                  : AppDimesions.size_20,
+                          height:
+                              controller.isHovering(i) || controller.isActive(i)
+                                  ? AppDimesions.size_25
+                                  : AppDimesions.size_20,
                           color:
                               controller.isHovering(i) || controller.isActive(i)
                                   ? AppColors.lightBlueish
@@ -73,11 +80,12 @@ class NavBarButton extends GetView<HomeController> {
                       ),
                       Text(
                         data[0].toString(),
-                        style: AppTextStyles.textRegular14mp400(
-                            color: controller.isHovering(i) ||
-                                    controller.isActive(i)
-                                ? AppColors.white
-                                : AppColors.black),
+                        style:
+                            controller.isHovering(i) || controller.isActive(i)
+                                ? AppTextStyles.textMedium16mp400(
+                                    color: AppColors.white)
+                                : AppTextStyles.textRegular14mp400(
+                                    color: AppColors.black),
                       ),
                     ],
                   ),

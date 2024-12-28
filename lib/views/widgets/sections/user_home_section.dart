@@ -18,7 +18,8 @@ class UserHomeSection extends StatelessWidget {
       children: [
         HeadingWithLineUi(
           heading: "about_me",
-          lineWidth: Get.width <= 470 ? AppDimesions.px_70 : AppDimesions.px_225,
+          lineWidth:
+              Get.width <= 470 ? AppDimesions.px_70 : AppDimesions.px_225,
         ),
         const SizedBox(
           height: AppDimesions.px_10,
@@ -76,10 +77,21 @@ class UserHomeSection extends StatelessWidget {
                         )
                       ],
                     ),
-                    Text(
-                      Utils.getString("user_app_development"),
-                      style: AppTextStyles.textRegular14mp400(),
-                    )
+                    RichText(
+                        text: TextSpan(
+                            style: AppTextStyles.textRegular14mp400(),
+                            children: [
+                          TextSpan(
+                              text: Utils.getString(
+                                  "user_app_development_part1")),
+                          TextSpan(
+                              text:
+                                  Utils.getString("user_app_development_part2"),
+                              style: AppTextStyles.textRegular14mp600()),
+                          TextSpan(
+                              text: Utils.getString(
+                                  "user_app_development_part3")),
+                        ])),
                   ],
                 ),
               ),
@@ -114,10 +126,21 @@ class UserHomeSection extends StatelessWidget {
                         )
                       ],
                     ),
-                    Text(
-                      Utils.getString("user_web_development"),
-                      style: AppTextStyles.textRegular14mp400(),
-                    )
+                    RichText(
+                        text: TextSpan(
+                            style: AppTextStyles.textRegular14mp400(),
+                            children: [
+                          TextSpan(
+                              text: Utils.getString(
+                                  "user_web_development_part1")),
+                          TextSpan(
+                              text:
+                                  Utils.getString("user_web_development_part2"),
+                              style: AppTextStyles.textRegular14mp600()),
+                          TextSpan(
+                              text: Utils.getString(
+                                  "user_web_development_part3")),
+                        ])),
                   ],
                 ),
               ),

@@ -15,13 +15,13 @@ class SideBar extends GetView<HomeController> {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(top: 45.0),
-      child: Stack(
-        alignment: Alignment.topCenter,
-        children: [
-          LayoutBuilder(builder: (context, constraints) {
-            return SingleChildScrollView(
-              child: Obx(
-                () => Container(
+      child: Obx(
+        () => Stack(
+          alignment: Alignment.topCenter,
+          children: [
+            LayoutBuilder(builder: (context, constraints) {
+              return SingleChildScrollView(
+                child: Container(
                   margin: const EdgeInsets.only(
                     top: AppDimesions.px_80,
                   ),
@@ -164,25 +164,39 @@ class SideBar extends GetView<HomeController> {
                     ),
                   ),
                 ),
-              ),
-            );
-          }),
-          Container(
-            width: AppDimesions.size_100,
-            height: AppDimesions.size_100,
-            decoration: BoxDecoration(
-                border: Border.all(
-                    color: AppColors.primary, width: AppDimesions.px_2),
-                borderRadius: BorderRadius.circular(AppDimesions.radius_8)),
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(AppDimesions.radius_6),
-              child: Image.asset(
-                "assets/images/user.jpg",
-                fit: BoxFit.cover,
+              );
+            }),
+            InkWell(
+              onTap: () {},
+              onHover: (value) {
+                controller.isUserImgHover.value = value;
+              },
+              child: AnimatedContainer(
+                duration: const Duration(seconds: 1),
+                width: controller.isUserImgHover.value
+                    ? AppDimesions.size_120
+                    : AppDimesions.size_100,
+                height: controller.isUserImgHover.value
+                    ? AppDimesions.size_120
+                    : AppDimesions.size_100,
+                decoration: BoxDecoration(
+                    border: Border.all(
+                        color: controller.lightThemeMode.value
+                            ? AppColors.lightBlackish
+                            : AppColors.primary,
+                        width: AppDimesions.px_1),
+                    borderRadius: BorderRadius.circular(AppDimesions.radius_8)),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(AppDimesions.radius_6),
+                  child: Image.asset(
+                    "assets/images/user.jpg",
+                    fit: BoxFit.cover,
+                  ),
+                ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

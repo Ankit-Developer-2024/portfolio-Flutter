@@ -15,6 +15,7 @@ import 'package:url_launcher/url_launcher.dart';
 
 class HomeController extends GetxController {
   RxBool lightThemeMode = true.obs;
+
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
   TextEditingController nameController = TextEditingController();
   TextEditingController mailPhoneController = TextEditingController();
@@ -119,7 +120,7 @@ class HomeController extends GetxController {
     {
       "projectName": "Portfolio",
       "projectTechUsed": "Flutter",
-      "projectURL": "",
+      "projectURL": "ankit-portfolio-swart.vercel.app/",
       "projectDevelopmentIn": "Web Development",
       "listOfImagesPath": [
         "portfolio_img/portfolio_1.png",
@@ -206,6 +207,7 @@ class HomeController extends GetxController {
 
   RxInt navBarButtonHoverIndex = 100.obs;
   RxInt navBarButtonSelectedIndex = 0.obs;
+  RxBool isUserImgHover = false.obs;
 
   bool isHovering(int val) => navBarButtonHoverIndex.value == val;
   bool isActive(int val) => navBarButtonSelectedIndex.value == val;
@@ -239,10 +241,7 @@ class HomeController extends GetxController {
         Get.snackbar("Get Some Error", "");
       }
     } else {
-      toast(
-          title: "This project is not hosted yet",
-          subTitle: "sub title",
-          icon: ToastIcon.info);
+      toast(title: "This project is not hosted yet", icon: ToastIcon.info);
     }
   }
 
@@ -331,6 +330,7 @@ class HomeController extends GetxController {
         name: nameController.text,
         email: mailPhoneController.text,
         message: messageController.text);
+    formKey.currentState!.reset();
 
     return;
   }
