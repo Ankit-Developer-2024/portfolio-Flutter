@@ -1,18 +1,18 @@
-# protfolio
+# Portfolio
 
-A new Flutter project.
 
-Emailjs we use for email must --remeber
+# Portfolio Contains:
 
-## Getting Started
+Skills: Showcasing my expertise in Flutter, Firebase, Node.js, MongoDB, and frontend technologies like HTML, CSS, JavaScript, and React.
 
-This project is a starting point for a Flutter application.
+What I Do: Details of my work, including app development, UI/UX design, API integration, and performance optimization.
 
-A few resources to get you started if this is your first Flutter project:
+Contact Information: Email, LinkedIn, and GitHub links for easy communication.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+Resume: A downloadable link to my updated resume.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Send a Message: A section to directly message me.
+
+Projects: Highlights of my key projects with links to demos or repositories.
+
+# Portfolio Link : https://ankit-portfolio-swart.vercel.app/
