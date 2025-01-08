@@ -120,7 +120,7 @@ class UserContactForm extends GetView<HomeController> {
                         controller.userFormData();
                       },
                       child: Text(
-                        Utils.getString("sumbit"),
+                        Utils.getString("send_msg"),
                         style: AppTextStyles.textRegular14mp600(
                           color: controller.lightThemeMode.value
                               ? AppColors.black

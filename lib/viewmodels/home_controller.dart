@@ -286,7 +286,6 @@ class HomeController extends GetxController {
             UserResumeSection(),
             SectionSeperateUi(),
             UserContactSection(),
-            SectionSeperateUi(),
           ],
         );
 

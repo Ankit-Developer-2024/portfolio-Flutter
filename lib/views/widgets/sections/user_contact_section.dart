@@ -20,7 +20,8 @@ class UserContactSection extends StatelessWidget {
       children: [
         HeadingWithLineUi(
           heading: "contanct",
-          lineWidth: Get.width <= 470 ? AppDimesions.px_70 : AppDimesions.px_225,
+          lineWidth:
+              Get.width <= 470 ? AppDimesions.px_70 : AppDimesions.px_225,
         ),
         const SizedBox(
           height: AppDimesions.px_10,

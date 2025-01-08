@@ -1,3 +1,4 @@
+import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:protfolio/core/styles/app_colors.dart';
 import 'package:protfolio/core/styles/app_dimesions.dart';
@@ -41,11 +42,16 @@ class HomeMobileScreen extends GetView<HomeController> {
               const SizedBox(
                 width: AppDimesions.px_4,
               ),
-              Text(
-                "Kumar",
-                style:
-                    AppTextStyles.textMedium16mp600(color: AppColors.secondary),
-              )
+              AnimatedTextKit(
+                repeatForever: true,
+                isRepeatingAnimation: true,
+                animatedTexts: [
+                  TypewriterAnimatedText("Kumar",
+                      textStyle: AppTextStyles.textMedium16mp600(
+                          color: AppColors.secondary),
+                      speed: const Duration(seconds: 1)),
+                ],
+              ),
             ],
           ),
           actions: [

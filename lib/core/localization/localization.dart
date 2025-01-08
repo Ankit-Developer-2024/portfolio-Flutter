@@ -47,10 +47,10 @@ class Localization extends Translations {
           "aps": "Adarsh Public Sr. Sec. School , Fatehabad , Haryana",
           "work_skills": "Work Skills",
           "phone_:": "Phone :",
-          "mail_:": "Main :",
+          "mail_:": "Mail :",
           "form_heading":
               "I am always open to discussing new projects, opportunities in tech world, partnerships and more so mentorship.",
-          "sumbit": "Sumbit",
+          "send_msg": "Send Message",
 
           //Experience
           "flutter_developer": "Flutter Developer",

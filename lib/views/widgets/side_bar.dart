@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:protfolio/core/app/componetns/my_button_animation.dart';
 import 'package:protfolio/core/styles/app_colors.dart';
 import 'package:protfolio/core/styles/app_dimesions.dart';
 import 'package:protfolio/core/styles/app_test_styles.dart';
@@ -109,17 +110,15 @@ class SideBar extends GetView<HomeController> {
                                 onTap: () {
                                   Utils.downloadPdf();
                                 },
-                                child: Container(
+                                child: MyButtonAnimation(
+                                  color: controller.lightThemeMode.value
+                                      ? AppColors.lightOrangish
+                                      : AppColors.darkModeColor,
                                   padding: const EdgeInsets.symmetric(
                                       vertical: AppDimesions.px_4,
                                       horizontal: AppDimesions.px_8),
-                                  decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(
-                                          AppDimesions.radius_70),
-                                      gradient: const LinearGradient(colors: [
-                                        AppColors.primary,
-                                        AppColors.secondary
-                                      ])),
+                                  borderRadius: BorderRadius.circular(
+                                      AppDimesions.radius_70),
                                   child: Row(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
@@ -156,7 +155,7 @@ class SideBar extends GetView<HomeController> {
                                     ],
                                   ),
                                 ),
-                              )
+                              ),
                             ],
                           ),
                         )

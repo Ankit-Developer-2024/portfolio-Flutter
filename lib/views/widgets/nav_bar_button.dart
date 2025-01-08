@@ -13,7 +13,7 @@ class NavBarButton extends GetView<HomeController> {
   Widget build(BuildContext context) {
     return Obx(
       () => Container(
-          height: AppDimesions.size_105,
+        height: AppDimesions.size_105,
         padding: const EdgeInsets.all(AppDimesions.px_16),
         decoration: BoxDecoration(
             color: controller.lightThemeMode.value
@@ -27,6 +27,7 @@ class NavBarButton extends GetView<HomeController> {
             )),
         child: Scrollbar(
           controller: _controller,
+          thumbVisibility: true,
           child: ListView.separated(
             controller: _controller,
             scrollDirection: Axis.horizontal,
