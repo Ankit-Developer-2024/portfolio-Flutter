@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:protfolio/core/styles/app_colors.dart';
-import 'package:protfolio/core/styles/app_dimesions.dart';
-import 'package:protfolio/viewmodels/home_controller.dart';
-import 'package:protfolio/views/widgets/top_bar.dart';
-import 'package:protfolio/views/widgets/side_bar.dart';
-import 'package:protfolio/views/widgets/nav_bar.dart';
-import 'package:protfolio/views/widgets/user_section.dart';
+import 'package:portfolio/core/styles/app_colors.dart';
+import 'package:portfolio/core/styles/app_dimesions.dart';
+import 'package:portfolio/viewmodels/home_controller.dart';
+import 'package:portfolio/views/widgets/top_bar.dart';
+import 'package:portfolio/views/widgets/side_bar.dart';
+import 'package:portfolio/views/widgets/nav_bar.dart';
+import 'package:portfolio/views/widgets/user_section.dart';
 
 class HomeDesktopScreen extends StatelessWidget {
   const HomeDesktopScreen({super.key});

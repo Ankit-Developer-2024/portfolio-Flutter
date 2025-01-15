@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:protfolio/core/app/gereral_bindings.dart';
-import 'package:protfolio/core/localization/localization.dart';
-import 'package:protfolio/core/styles/app_colors.dart';
-import 'package:protfolio/viewmodels/home_controller.dart';
-import 'package:protfolio/views/home_view.dart';
+import 'package:portfolio/core/app/gereral_bindings.dart';
+import 'package:portfolio/core/localization/localization.dart';
+import 'package:portfolio/core/styles/app_colors.dart';
+import 'package:portfolio/viewmodels/home_controller.dart';
+import 'package:portfolio/views/home_view.dart';
 import 'package:toastification/toastification.dart';
 
 void main() {

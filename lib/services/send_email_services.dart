@@ -2,8 +2,8 @@ import 'dart:convert';
 
 import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
-import 'package:protfolio/core/app/componetns/universal_toast_ui.dart';
-import 'package:protfolio/core/enum/app_enum.dart';
+import 'package:portfolio/core/app/componetns/universal_toast_ui.dart';
+import 'package:portfolio/core/enum/app_enum.dart';
 
 class SendEmailServices {
   static sendMail({

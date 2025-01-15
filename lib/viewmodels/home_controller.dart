@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:protfolio/core/app/componetns/section_seperate_ui.dart';
-import 'package:protfolio/core/app/componetns/universal_toast_ui.dart';
-import 'package:protfolio/core/enum/app_enum.dart';
-import 'package:protfolio/services/send_email_services.dart';
-import 'package:protfolio/utils/utilty/utils.dart';
-import 'package:protfolio/views/widgets/sections/user_contact_section.dart';
-import 'package:protfolio/views/widgets/sections/user_experience_section.dart';
-import 'package:protfolio/views/widgets/sections/user_home_section.dart';
-import 'package:protfolio/views/widgets/sections/user_project_section.dart';
-import 'package:protfolio/views/widgets/sections/user_resume_section.dart';
-import 'package:protfolio/views/widgets/sections/user_skills_section.dart';
+import 'package:portfolio/core/app/componetns/section_seperate_ui.dart';
+import 'package:portfolio/core/app/componetns/universal_toast_ui.dart';
+import 'package:portfolio/core/enum/app_enum.dart';
+import 'package:portfolio/services/send_email_services.dart';
+import 'package:portfolio/utils/utilty/utils.dart';
+import 'package:portfolio/views/widgets/sections/user_contact_section.dart';
+import 'package:portfolio/views/widgets/sections/user_experience_section.dart';
+import 'package:portfolio/views/widgets/sections/user_home_section.dart';
+import 'package:portfolio/views/widgets/sections/user_project_section.dart';
+import 'package:portfolio/views/widgets/sections/user_resume_section.dart';
+import 'package:portfolio/views/widgets/sections/user_skills_section.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class HomeController extends GetxController {

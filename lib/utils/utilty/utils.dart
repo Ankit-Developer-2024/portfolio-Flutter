@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:protfolio/core/app/componetns/universal_toast_ui.dart';
-import 'package:protfolio/core/enum/app_enum.dart';
+import 'package:portfolio/core/app/componetns/universal_toast_ui.dart';
+import 'package:portfolio/core/enum/app_enum.dart';
 import 'package:universal_html/html.dart'
     as html; // Cross-platform file handling
 import 'package:flutter/services.dart'; // For loading assets

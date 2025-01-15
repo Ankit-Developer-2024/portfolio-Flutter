@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:protfolio/viewmodels/home_controller.dart';
-import 'package:protfolio/views/screens/home_desktop_screen.dart';
-import 'package:protfolio/views/screens/home_mobile_screen.dart';
+import 'package:portfolio/viewmodels/home_controller.dart';
+import 'package:portfolio/views/screens/home_desktop_screen.dart';
+import 'package:portfolio/views/screens/home_mobile_screen.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
 class HomeView extends StatelessWidget {

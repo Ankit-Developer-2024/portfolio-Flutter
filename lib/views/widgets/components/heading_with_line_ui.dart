@@ -1,10 +1,10 @@
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
-import 'package:protfolio/core/styles/app_colors.dart';
-import 'package:protfolio/core/styles/app_dimesions.dart';
-import 'package:protfolio/core/styles/app_test_styles.dart';
-import 'package:protfolio/utils/utilty/utils.dart';
-import 'package:protfolio/viewmodels/home_controller.dart';
+import 'package:portfolio/core/styles/app_colors.dart';
+import 'package:portfolio/core/styles/app_dimesions.dart';
+import 'package:portfolio/core/styles/app_test_styles.dart';
+import 'package:portfolio/utils/utilty/utils.dart';
+import 'package:portfolio/viewmodels/home_controller.dart';
 
 class HeadingWithLineUi extends StatelessWidget {
   const HeadingWithLineUi(

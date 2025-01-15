@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:protfolio/core/app/componetns/my_button_animation.dart';
-import 'package:protfolio/core/styles/app_colors.dart';
-import 'package:protfolio/core/styles/app_dimesions.dart';
-import 'package:protfolio/core/styles/app_test_styles.dart';
-import 'package:protfolio/utils/utilty/utils.dart';
-import 'package:protfolio/viewmodels/home_controller.dart';
-import 'package:protfolio/views/widgets/components/user_and_social_media_ui.dart';
+import 'package:portfolio/core/app/componetns/my_button_animation.dart';
+import 'package:portfolio/core/styles/app_colors.dart';
+import 'package:portfolio/core/styles/app_dimesions.dart';
+import 'package:portfolio/core/styles/app_test_styles.dart';
+import 'package:portfolio/utils/utilty/utils.dart';
+import 'package:portfolio/viewmodels/home_controller.dart';
+import 'package:portfolio/views/widgets/components/user_and_social_media_ui.dart';
 
 class TopBar extends GetView<HomeController> {
   const TopBar({super.key});

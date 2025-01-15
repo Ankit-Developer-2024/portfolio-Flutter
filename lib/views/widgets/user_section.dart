@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:protfolio/core/styles/app_colors.dart';
-import 'package:protfolio/core/styles/app_dimesions.dart';
-import 'package:protfolio/viewmodels/home_controller.dart';
-import 'package:protfolio/views/widgets/nav_bar_button.dart';
+import 'package:portfolio/core/styles/app_colors.dart';
+import 'package:portfolio/core/styles/app_dimesions.dart';
+import 'package:portfolio/viewmodels/home_controller.dart';
+import 'package:portfolio/views/widgets/nav_bar_button.dart';
 
 class UserSection extends GetView<HomeController> {
   const UserSection({super.key});

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:protfolio/core/styles/app_colors.dart';
-import 'package:protfolio/core/styles/app_dimesions.dart';
+import 'package:portfolio/core/styles/app_colors.dart';
+import 'package:portfolio/core/styles/app_dimesions.dart';
 
 class MyButtonAnimation extends StatefulWidget {
   final Widget child;

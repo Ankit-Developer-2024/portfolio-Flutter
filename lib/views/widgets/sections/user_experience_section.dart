@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:protfolio/utils/utilty/utils.dart';
-import 'package:protfolio/views/widgets/components/heading_with_line_ui.dart';
-import 'package:protfolio/core/styles/app_dimesions.dart';
-import 'package:protfolio/views/widgets/components/user_experience_data_ui.dart';
+import 'package:portfolio/utils/utilty/utils.dart';
+import 'package:portfolio/views/widgets/components/heading_with_line_ui.dart';
+import 'package:portfolio/core/styles/app_dimesions.dart';
+import 'package:portfolio/views/widgets/components/user_experience_data_ui.dart';
 
 class UserExperienceSection extends StatelessWidget {
   const UserExperienceSection({super.key});

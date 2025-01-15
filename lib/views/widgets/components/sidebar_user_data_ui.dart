@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:protfolio/core/styles/app_colors.dart';
-import 'package:protfolio/core/styles/app_dimesions.dart';
-import 'package:protfolio/core/styles/app_test_styles.dart';
-import 'package:protfolio/utils/utilty/utils.dart';
+import 'package:portfolio/core/styles/app_colors.dart';
+import 'package:portfolio/core/styles/app_dimesions.dart';
+import 'package:portfolio/core/styles/app_test_styles.dart';
+import 'package:portfolio/utils/utilty/utils.dart';
 
 class SidebarUserDataUi extends StatelessWidget {
   const SidebarUserDataUi(

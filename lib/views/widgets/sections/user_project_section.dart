@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:protfolio/core/styles/app_colors.dart';
-import 'package:protfolio/core/styles/app_dimesions.dart';
-import 'package:protfolio/viewmodels/home_controller.dart';
-import 'package:protfolio/views/widgets/components/heading_with_line_ui.dart';
-import 'package:protfolio/views/widgets/components/user_project_data_ui.dart';
+import 'package:portfolio/core/styles/app_colors.dart';
+import 'package:portfolio/core/styles/app_dimesions.dart';
+import 'package:portfolio/viewmodels/home_controller.dart';
+import 'package:portfolio/views/widgets/components/heading_with_line_ui.dart';
+import 'package:portfolio/views/widgets/components/user_project_data_ui.dart';
 
 class UserProjectSection extends GetView<HomeController> {
   const UserProjectSection({super.key});
