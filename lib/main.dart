@@ -1,14 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:portfolio/core/app/gereral_bindings.dart';
 import 'package:portfolio/core/localization/localization.dart';
+import 'package:portfolio/core/routing/app_pages.dart';
+import 'package:portfolio/core/routing/app_route.dart';
 import 'package:portfolio/core/styles/app_colors.dart';
 import 'package:portfolio/viewmodels/home_controller.dart';
-import 'package:portfolio/views/home_view.dart';
 import 'package:toastification/toastification.dart';
+import 'package:flutter_web_plugins/url_strategy.dart';
 
 void main() {
-  Get.put(HomeController());
+  usePathUrlStrategy();
+
+  Get.put<Localization>(Localization(), permanent: true);
+  Get.lazyPut(() => HomeController());
   runApp(const MyApp());
 }
 
@@ -18,7 +22,6 @@ class MyApp extends GetView<HomeController> {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    Get.put(Localization());
     return Obx(
       () => ToastificationWrapper(
         child: GetMaterialApp(
@@ -27,23 +30,14 @@ class MyApp extends GetView<HomeController> {
           translations: Get.find<Localization>(),
           locale: Localization.englishLocal,
           fallbackLocale: Localization.fallBackLocal,
-          initialBinding: GereralBindings(),
           darkTheme: ThemeData(
               brightness: Brightness.dark,
-              colorScheme: const ColorScheme(
+              colorScheme: const ColorScheme.dark().copyWith(
                   brightness: Brightness.dark,
-                  primary: AppColors.lightBlackish,
-                  onPrimary: AppColors.lightLightOrangish,
-                  primaryContainer: AppColors.secondary,
-                  onPrimaryContainer: AppColors.black12,
-                  secondary: AppColors.lightLightOrangish,
-                  onSecondary: AppColors.secondary,
-                  error: AppColors.secondary,
-                  onError: AppColors.secondary,
                   onSurface:
-                      AppColors.white, //this is apply mainly on text , icon etc
+                      AppColors.black, //this is apply mainly on text , icon etc
                   surface: AppColors
-                      .darkModeColor), //this is apply mainly on complete screen where we no give color [default]
+                      .white), //this is apply mainly on complete screen where we no give color [default]
               useMaterial3: true),
           themeMode: controller.themeMode.value,
           theme: ThemeData(
@@ -54,7 +48,8 @@ class MyApp extends GetView<HomeController> {
             ),
             useMaterial3: true,
           ),
-          home: const HomeView(),
+          initialRoute: AppRoute.home,
+          getPages: AppPages.route,
         ),
       ),
     );

@@ -38,9 +38,13 @@ class AppDimesions {
   static const double size_50 = 50;
   static const double size_60 = 60;
   static const double size_80 = 80;
+  static const double size_90 = 90;
   static const double size_100 = 100;
   static const double size_105 = 105;
   static const double size_120 = 120;
+  static const double size_140 = 140;
+  static const double size_200 = 200;
+  static const double size_400 = 400;
   static const double size_550 = 550;
   static const double size_580 = 500;
 }

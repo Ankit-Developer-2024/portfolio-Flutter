@@ -5,21 +5,26 @@ import 'package:portfolio/core/app/componetns/universal_toast_ui.dart';
 import 'package:portfolio/core/enum/app_enum.dart';
 import 'package:portfolio/services/send_email_services.dart';
 import 'package:portfolio/utils/utilty/utils.dart';
-import 'package:portfolio/views/widgets/sections/user_contact_section.dart';
-import 'package:portfolio/views/widgets/sections/user_experience_section.dart';
-import 'package:portfolio/views/widgets/sections/user_home_section.dart';
-import 'package:portfolio/views/widgets/sections/user_project_section.dart';
-import 'package:portfolio/views/widgets/sections/user_resume_section.dart';
-import 'package:portfolio/views/widgets/sections/user_skills_section.dart';
+import 'package:portfolio/views/home/widgets/sections/user_contact_section.dart';
+import 'package:portfolio/views/home/widgets/sections/user_experience_section.dart';
+import 'package:portfolio/views/home/widgets/sections/user_home_section.dart';
+import 'package:portfolio/views/home/widgets/sections/user_project_section.dart';
+import 'package:portfolio/views/home/widgets/sections/user_resume_section.dart';
+import 'package:portfolio/views/home/widgets/sections/user_skills_section.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class HomeController extends GetxController {
   RxBool lightThemeMode = true.obs;
 
-  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+   GlobalKey<FormState> formKey = GlobalKey<FormState>();
   TextEditingController nameController = TextEditingController();
   TextEditingController mailPhoneController = TextEditingController();
   TextEditingController messageController = TextEditingController();
+
+    void replaceFormKey() {
+    formKey = GlobalKey<FormState>();
+    update(); // Update the UI if needed
+  }
 
   String userLinkedInUrl = "www.linkedin.com/in/ankit-kumar-3850512b0";
   String userGithubUrl = "github.com/Ankit-Developer-2024";
@@ -332,5 +337,11 @@ class HomeController extends GetxController {
     formKey.currentState!.reset();
 
     return;
+  }
+
+  @override
+  void onClose() {
+    
+    super.onClose();
   }
 }

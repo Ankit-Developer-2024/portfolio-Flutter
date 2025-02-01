@@ -30,13 +30,16 @@ class Localization extends Translations {
           "app_development": "App Development",
           "user_app_development_part1":
               "I am an experienced Flutter app developer skilled in creating cross-platform mobile applications using",
-          "user_app_development_part2":" Flutter and Dart. ",
-          "user_app_development_part3":"I have worked extensively on UI/UX design, API integration, and state management using tools like GetX. My contributions include enhancing the design and functionality of apps like Just Fresh and Just Retailer, ensuring seamless performance and user satisfaction.",
+          "user_app_development_part2": " Flutter and Dart. ",
+          "user_app_development_part3":
+              "I have worked extensively on UI/UX design, API integration, and state management using tools like GetX. My contributions include enhancing the design and functionality of apps like Just Fresh and Just Retailer, ensuring seamless performance and user satisfaction.",
           "web_development": "Web Development",
           "user_web_development_part1":
               "I am a web developer proficient in the MERN stack, including",
-          "user_web_development_part2":" MongoDB, Express.js, React, and Node.js ", 
-          "user_web_development_part3":"I specialize in creating responsive and dynamic web applications, integrating APIs, and managing backend operations. My expertise includes building scalable, full-stack solutions, designing websites using Flutter for cross-platform compatibility, and ensuring seamless user experiences.", 
+          "user_web_development_part2":
+              " MongoDB, Express.js, React, and Node.js ",
+          "user_web_development_part3":
+              "I specialize in creating responsive and dynamic web applications, integrating APIs, and managing backend operations. My expertise includes building scalable, full-stack solutions, designing websites using Flutter for cross-platform compatibility, and ensuring seamless user experiences.",
           "experience": "Experience",
           "education": "Education",
           "gju": "Guru Jambheshwar University of Science & Technology , Hisar",
@@ -70,6 +73,61 @@ class Localization extends Translations {
           "feb_2024_july_2024": "Feb 2024 - July 2024",
           "intern_1_point_1":
               "As a Flutter developer intern, I specialized in crafting polished UI designs and resolving issues for JustFresh and JustRetailer apps. I also conducted POC and R&D, showcasing my proficiency in app development and problem-solving.",
+
+          //edit Mode
+           "image_or_icon": "Image/Icon:",
+           "pick_image": "Pick Image",
+           "pick_images": "Pick Images",
+          "pick_resume": "Pick Resume",
+          //sidebar dialogbox
+          
+          "user_data": "User Data",
+          "user_name": "Name:",
+          "user_tech_stack": "Tech Stack:",
+          "user_linkedIn_url": "LinkedIn Url:",
+          "user_github_url": "Github Url:",
+          "user_phone_number": "Phone No.:",
+          "user_email_title": "Email:",
+          "user_location_title": "Location:",
+          "user_location_url_title": "Location Url:",
+
+          //home dialogbox
+          "user_about_me_data": "About Me Data",
+          "user_what_i_do_data": "What I do Data",
+          "user_about_me_desc": "About Me Desc.:",
+          "user_what_i_do": "What I do",
+          "user_what_i_do_title": "Title:",
+          "user_what_i_do_desc": "Description:",
+          
+        
+          //experience dialogbox
+          "user_experience_data": "Experience Data",
+          "user_tech_stack_in_comapny": "Tech Stack in company:",
+          "user_designation_in_company": "Designation in company:",
+          "user_company_name": "Company Name:",
+          "user_company_location": "Company Location:",
+          "user_company_experience": "Your experience in company/Your work:",
+          "user_company_experience_point": "At least one point is required",
+          "user_in_curr_role_or_not": "I am currently working in this role",
+          "start_date": "Start Date:",
+          "end_date": "End Date:",
+          "both_date_required": "Start and end dates are required",
+          "start_date_required": "Start date is required",
+
+
+          //skill dialogbox string
+          "user_skill_data": "Skill Data",
+          "user_skill_name": "Skill:",
+          "user_skill_image_req": "Image is required",
+          
+          //project dialogbox string
+          "user_project_data": "Project Data",
+          "user_project_name": "Project Name:",
+          "user_development_fields": "Development Field:",
+          "user_technology_stack": "Technology Stack:",
+          "user_peoject_image_min_req": "Minimum 4 image is required",
+          "user_peoject_image_max_req": "Maximum 10 images allowed. ",
+
         }
       };
 }

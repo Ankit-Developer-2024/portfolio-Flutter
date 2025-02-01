@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:portfolio/core/styles/app_colors.dart';
 import 'package:portfolio/core/styles/app_dimesions.dart';
 import 'package:portfolio/core/styles/app_test_styles.dart';
 import 'package:portfolio/utils/utilty/utils.dart';
+import 'package:portfolio/views/edit/widgets/user_skill_dialog_box.dart';
+import 'package:portfolio/views/home/widgets/components/edit_button.dart';
 
 class ConatinerImageText extends StatelessWidget {
   const ConatinerImageText(
@@ -11,12 +14,14 @@ class ConatinerImageText extends StatelessWidget {
       required this.skillName,
       this.color,
       this.textStyle,
+      this.isItSkillSection,
       this.defaultWidth = true});
   final String imageName;
   final String skillName;
   final TextStyle? textStyle;
   final Color? color;
   final bool defaultWidth;
+  final bool? isItSkillSection;
 
   @override
   Widget build(BuildContext context) {
@@ -32,28 +37,60 @@ class ConatinerImageText extends StatelessWidget {
           color: color ?? AppColors.primary,
           borderRadius: BorderRadius.circular(AppDimesions.radius_6),
         ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisSize: MainAxisSize.min,
+        child: Stack(
+          alignment: Alignment.topLeft,
           children: [
-            Image.asset(
-              Utils.getIcons(imageName),
-              width: AppDimesions.size_25,
-              height: AppDimesions.size_25,
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Image.asset(
+                  Utils.getIcons(imageName),
+                  width: AppDimesions.size_25,
+                  height: AppDimesions.size_25,
+                ),
+                const SizedBox(
+                  width: AppDimesions.px_6,
+                ),
+                Flexible(
+                  child: Text(
+                    skillName,
+                    style: textStyle ?? AppTextStyles.textMedium16mp400(),
+                    maxLines: 5,
+                    softWrap: true,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                ),
+              ],
             ),
-            const SizedBox(
-              width: AppDimesions.px_6,
-            ),
-            Flexible(
-              child: Text(
-                skillName,
-                style: textStyle ?? AppTextStyles.textMedium16mp400(),
-                maxLines: 5,
-                softWrap: true,
-                overflow: TextOverflow.ellipsis,
-              ),
-            )
+            isItSkillSection != null
+                ? Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      Align(
+                        alignment: Alignment.topRight,
+                        child: EditButton(
+                            onTap: () {
+                              Get.dialog(const UserSkillDialogBox());
+                            },
+                            color: AppColors.black,
+                            iconSize: 25),
+                      ),
+                      const SizedBox(
+                        width: AppDimesions.px_10,
+                      ),
+                      Align(
+                        alignment: Alignment.topRight,
+                        child: EditButton(
+                            icon: Icons.delete_outlined,
+                            onTap: () {},
+                            color: AppColors.black,
+                            iconSize: 25),
+                      )
+                    ],
+                  )
+                : const SizedBox.shrink()
           ],
         ),
       );
