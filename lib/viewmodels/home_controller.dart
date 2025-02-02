@@ -16,13 +16,14 @@ import 'package:url_launcher/url_launcher.dart';
 class HomeController extends GetxController {
   RxBool lightThemeMode = true.obs;
 
-   GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  GlobalKey<FormState> formKey = GlobalKey<FormState>();
   TextEditingController nameController = TextEditingController();
   TextEditingController mailPhoneController = TextEditingController();
   TextEditingController messageController = TextEditingController();
 
-    void replaceFormKey() {
+  void replaceFormKey() {
     formKey = GlobalKey<FormState>();
+    
     update(); // Update the UI if needed
   }
 
@@ -341,7 +342,9 @@ class HomeController extends GetxController {
 
   @override
   void onClose() {
-    
+    nameController.dispose();
+    mailPhoneController.dispose();
+    messageController.dispose();
     super.onClose();
   }
 }

@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 import 'package:pdfx/pdfx.dart';
 import 'package:portfolio/utils/utilty/user_file_picker.dart';
 
-class EditModeController {
+class EditModeController extends GetxController {
   RxDouble maxWidth = Get.size.width.obs;
 
   TextEditingController userNameController = TextEditingController();
@@ -240,5 +240,34 @@ class EditModeController {
         projectMaxImagRequired.value = true;
       }
     }
+  }
+
+  @override
+  void onClose() {
+    userNameController.dispose();
+    userEmailController.dispose();
+    userGithubUrlController.dispose();
+    userLinkInUrlController.dispose();
+    userPhoneNumberController.dispose();
+    userLocationController.dispose();
+    userLocationUrlController.dispose();
+    userTecStackController.dispose();
+
+    aboutMeDescController.dispose();
+    whatIDoTitleController.dispose();
+    whatIDoTitleDescController.dispose();
+
+    tectStackInCompanyController.dispose();
+    designationInCompanyController.dispose();
+    companyNameController.dispose();
+    companyLocationController.dispose();
+    yourExperiencePoint1Controller.dispose();
+    yourExperiencePoint2Controller.dispose();
+    yourExperiencePoint3Controller.dispose();
+
+    projectNameController.dispose();
+    developmentFieldsController.dispose();
+    techStackController.dispose();
+    super.onClose();
   }
 }

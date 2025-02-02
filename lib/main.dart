@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:portfolio/core/app/componetns/not_found_404.dart';
 import 'package:portfolio/core/localization/localization.dart';
 import 'package:portfolio/core/routing/app_pages.dart';
 import 'package:portfolio/core/routing/app_route.dart';
@@ -12,14 +13,13 @@ void main() {
   usePathUrlStrategy();
 
   Get.put<Localization>(Localization(), permanent: true);
-  Get.lazyPut(() => HomeController());
+  Get.put<HomeController>(HomeController(), permanent: true);
   runApp(const MyApp());
 }
 
 class MyApp extends GetView<HomeController> {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return Obx(
@@ -50,6 +50,8 @@ class MyApp extends GetView<HomeController> {
           ),
           initialRoute: AppRoute.home,
           getPages: AppPages.route,
+          unknownRoute:
+              GetPage(name: '/not-found', page: () => const NotFound()),
         ),
       ),
     );

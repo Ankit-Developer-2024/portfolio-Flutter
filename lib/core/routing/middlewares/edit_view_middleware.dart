@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/navigator.dart';
 import 'package:get/get.dart';
 import 'package:portfolio/core/app/componetns/universal_toast_ui.dart';
 import 'package:portfolio/core/enum/app_enum.dart';
 import 'package:portfolio/core/routing/app_route.dart';
-import 'package:portfolio/core/styles/app_colors.dart';
 import 'package:portfolio/core/styles/app_test_styles.dart';
 import 'package:portfolio/viewmodels/home_controller.dart';
 
@@ -13,6 +11,7 @@ class EditViewMiddleware extends GetMiddleware {
 
   @override
   GetPage? onPageCalled(GetPage? page) {
+    Get.find<HomeController>().replaceFormKey();
     Future.delayed(Duration.zero, () {
       Get.dialog(
         AlertDialog(
