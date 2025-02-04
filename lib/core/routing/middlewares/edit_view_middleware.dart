@@ -63,6 +63,7 @@ class EditViewMiddleware extends GetMiddleware {
             ),
           ],
         ),
+        barrierDismissible: false,
       );
     });
 
