@@ -79,7 +79,7 @@ class Localization extends Translations {
            "pick_image": "Pick Image",
            "pick_images": "Pick Images",
           "pick_resume": "Pick Resume",
-          //sidebar dialogbox
+          //sidebar info dialogbox
           
           "user_data": "User Data",
           "user_name": "Name:",
@@ -90,7 +90,9 @@ class Localization extends Translations {
           "user_email_title": "Email:",
           "user_location_title": "Location:",
           "user_location_url_title": "Location Url:",
-
+          "user_image_required":"User image is required.",
+          "user_resume_required":"User resume is required.",
+           
           //home dialogbox
           "user_about_me_data": "About Me Data",
           "user_what_i_do_data": "What I do Data",

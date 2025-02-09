@@ -1,15 +1,25 @@
+import 'dart:async';
 import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pdfx/pdfx.dart';
+import 'package:portfolio/core/app/componetns/universal_toast_ui.dart';
+import 'package:portfolio/core/enum/app_enum.dart';
+import 'package:portfolio/data/models/user_model.dart';
+import 'package:portfolio/data/repository/user_repository.dart';
 import 'package:portfolio/utils/utilty/user_file_picker.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
+import 'package:http/http.dart' as http;
 
 class EditModeController extends GetxController {
   RxDouble maxWidth = Get.size.width.obs;
+  RxBool isApiLoderShow = false.obs;
+
+  UserRepository userRepository = UserRepository();
 
   TextEditingController userNameController = TextEditingController();
-  TextEditingController userTecStackController = TextEditingController();
+  TextEditingController userTechStackController = TextEditingController();
   TextEditingController userLinkInUrlController = TextEditingController();
   TextEditingController userGithubUrlController = TextEditingController();
   TextEditingController userPhoneNumberController = TextEditingController();
@@ -21,7 +31,10 @@ class EditModeController extends GetxController {
 
   var userImage = Rxn<Uint8List>();
   var userResume = Rxn<Uint8List>();
-  PdfController? pdfController;
+  RxBool isUserImageRequired = false.obs;
+  RxBool isUserResumeRequired = false.obs;
+  var pdfController = Rxn<PdfController>();
+  var userModel = Rxn<UserModel>();
 
   //home dialogboc
   TextEditingController aboutMeDescController = TextEditingController();
@@ -100,26 +113,131 @@ class EditModeController extends GetxController {
     Uint8List? image = await UserFilePicker.pickImage();
 
     if (image != null) {
+      isUserImageRequired.value = false;
       userImage.value = image;
     }
   }
 
   void getResume() async {
     Uint8List? resume = await UserFilePicker.pickPdfFile();
-
+    pdfController.value?.dispose();
+    pdfController.value = null;
+    pdfController.refresh();
     if (resume != null) {
+      isUserResumeRequired.value = false;
       userResume.value = resume;
-      pdfController = PdfController(document: PdfDocument.openData(resume));
+      Future.delayed(const Duration(milliseconds: 100), () {
+        pdfController.value =
+            PdfController(document: PdfDocument.openData(userResume.value!));
+        pdfController.refresh(); // Ensure refresh after assignment
+      });
     }
   }
 
-  void uploadUserData() {
-    print("object2");
-    if (formKey.currentState!.validate()) {
-      print("object");
-      print(userNameController.text);
+  void uploadUserData() async {
+    if (formKey.currentState!.validate() &&
+        userImage.value != null &&
+        userResume.value != null) {
+      isUserResumeRequired.value = false;
+      isUserImageRequired.value = false;
+      try {
+        isApiLoderShow.value = true;
+        if (userModel.value != null) {
+          userModel.value = await userRepository.updateUserData(
+            userId: userModel.value!.id,
+            userName: userNameController.text,
+            techStack: userTechStackController.text,
+            linkedUrl: userLinkInUrlController.text,
+            githubUrl: userGithubUrlController.text,
+            locationUrl: userLocationUrlController.text,
+            userImage: userImage.value!,
+            userResume: userResume.value!,
+            phoneNumber: userPhoneNumberController.text,
+            email: userEmailController.text,
+            location: userLocationController.text,
+            imageUrl: userModel.value!.userImageUrl,
+            resumeUrl: userModel.value!.userResumeUrl,
+          );
+
+        } else {
+          userModel.value = await userRepository.uploadUserData(
+            userName: userNameController.text,
+            techStack: userTechStackController.text,
+            linkedUrl: userLinkInUrlController.text,
+            githubUrl: userGithubUrlController.text,
+            locationUrl: userLocationUrlController.text,
+            userImage: userImage.value!,
+            userResume: userResume.value!,
+            phoneNumber: userPhoneNumberController.text,
+            email: userEmailController.text,
+            location: userLocationController.text,
+          );
+        }
+        isApiLoderShow.value = false;
+
+        if (userModel.value != null) {
+          insilizeUserInfoDialog();
+          insilizePdfData();
+          insilizeImageData();
+        }
+      } on PostgrestException catch (e) {
+        isApiLoderShow.value = false;
+        toast(title: e.message.toString(), icon: ToastIcon.warning);
+      } catch (e) {
+        isApiLoderShow.value = false;
+        toast(title: e.toString(), icon: ToastIcon.error);
+      }
     } else {
-      print("object2");
+      if (userImage.value == null) {
+        isUserImageRequired.value = true;
+      }
+      if (userResume.value == null) {
+        isUserResumeRequired.value = true;
+      }
+    }
+  }
+
+  void insilizeUserInfoDialog() {
+    if (userModel.value != null) {
+      userNameController.text = userModel.value!.userName;
+      userTechStackController.text = userModel.value!.techStack;
+      userLinkInUrlController.text = userModel.value!.linkedUrl;
+      userGithubUrlController.text = userModel.value!.githubUrl;
+      userLocationUrlController.text = userModel.value!.locationUrl ?? '';
+      userPhoneNumberController.text = userModel.value!.phoneNumber;
+      userEmailController.text = userModel.value!.email;
+      userLocationController.text = userModel.value!.location;
+    }
+  }
+
+  void insilizePdfData() async {
+    if (userModel.value != null) {
+      final response =
+          await http.get(Uri.parse(userModel.value!.userResumeUrl));
+
+      if (response.statusCode == 200) {
+        userResume.value = null;
+        userResume.value = response.bodyBytes;
+        pdfController.value?.dispose();
+        pdfController.value = null;
+        pdfController.refresh();
+        Future.delayed(const Duration(milliseconds: 100), () {
+          pdfController.value =
+              PdfController(document: PdfDocument.openData(userResume.value!));
+          pdfController.refresh(); // Ensure refresh after assignment
+        });
+      }
+    }
+  }
+
+  void insilizeImageData() async {
+    if (userModel.value != null) {
+      final response = await http.get(Uri.parse(userModel.value!.userImageUrl));
+
+      if (response.statusCode == 200) {
+        userImage.value = null;
+        userImage.value = response.bodyBytes;
+      }
     }
   }
 
@@ -251,7 +369,7 @@ class EditModeController extends GetxController {
     userPhoneNumberController.dispose();
     userLocationController.dispose();
     userLocationUrlController.dispose();
-    userTecStackController.dispose();
+    userTechStackController.dispose();
 
     aboutMeDescController.dispose();
     whatIDoTitleController.dispose();

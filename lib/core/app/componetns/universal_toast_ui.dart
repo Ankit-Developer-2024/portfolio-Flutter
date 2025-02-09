@@ -19,7 +19,8 @@ ToastificationItem toast({
     style: ToastificationStyle.flat,
     autoCloseDuration: const Duration(seconds: 3),
     title: Text(
-      title,
+      title.trim().capitalizeFirst!,
+      maxLines: 10,
       style: AppTextStyles.textMedium16mp600(
           color: Get.find<HomeController>().lightThemeMode.value
               ? AppColors.black
@@ -29,7 +30,7 @@ ToastificationItem toast({
     description: subTitle == null
         ? const SizedBox.shrink()
         : Text(
-            subTitle,
+            subTitle.trim().capitalizeFirst!,
             style: AppTextStyles.textMedium16mp400(
                 color: Get.find<HomeController>().lightThemeMode.value
                     ? AppColors.black

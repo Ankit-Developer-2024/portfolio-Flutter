@@ -11,10 +11,12 @@ import 'package:portfolio/views/home/widgets/sections/user_home_section.dart';
 import 'package:portfolio/views/home/widgets/sections/user_project_section.dart';
 import 'package:portfolio/views/home/widgets/sections/user_resume_section.dart';
 import 'package:portfolio/views/home/widgets/sections/user_skills_section.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class HomeController extends GetxController {
   RxBool lightThemeMode = true.obs;
+  SupabaseClient supabase = Supabase.instance.client;
 
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
   TextEditingController nameController = TextEditingController();
@@ -23,7 +25,7 @@ class HomeController extends GetxController {
 
   void replaceFormKey() {
     formKey = GlobalKey<FormState>();
-    
+
     update(); // Update the UI if needed
   }
 

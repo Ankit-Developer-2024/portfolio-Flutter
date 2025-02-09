@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:portfolio/viewmodels/home_controller.dart';
-import 'package:portfolio/views/edit/widgets/user_home_aboutMe_dialog_box.dart';
+import 'package:portfolio/views/edit/widgets/user_home_about_me_dialog_box.dart';
 import 'package:portfolio/views/edit/widgets/user_home_dialog_box.dart';
 import 'package:portfolio/views/home/widgets/components/edit_button.dart';
 import 'package:portfolio/views/home/widgets/components/heading_with_line_ui.dart';
@@ -26,7 +26,7 @@ class UserHomeSection extends StatelessWidget {
                 alignment: Alignment.centerRight,
                 child: EditButton(
                   onTap: () {
-                    Get.dialog(const UserHomeAboutmeDialogBox());
+                    Get.dialog(const UserHomeAboutMeDialogBox());
                   },
                   color: Get.find<HomeController>().lightThemeMode.value
                       ? AppColors.black
