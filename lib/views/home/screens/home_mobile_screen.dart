@@ -1,5 +1,6 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
+import 'package:portfolio/core/routing/app_route.dart';
 import 'package:portfolio/core/styles/app_colors.dart';
 import 'package:portfolio/core/styles/app_dimesions.dart';
 import 'package:portfolio/core/styles/app_test_styles.dart';
@@ -31,12 +32,17 @@ class HomeMobileScreen extends GetView<HomeController> {
               : AppColors.mediumBlue,
           title: Row(
             children: [
-              Text(
-                "Ankit",
-                style: AppTextStyles.textMedium16mp600(
-                  color: controller.lightThemeMode.value
-                      ? AppColors.black
-                      : AppColors.white,
+              GestureDetector(
+                onTap: () {
+                  Get.toNamed(AppRoute.editMode);
+                },
+                child: Text(
+                  "Ankit",
+                  style: AppTextStyles.textMedium16mp600(
+                    color: controller.lightThemeMode.value
+                        ? AppColors.black
+                        : AppColors.white,
+                  ),
                 ),
               ),
               const SizedBox(
