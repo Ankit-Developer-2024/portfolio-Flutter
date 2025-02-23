@@ -16,8 +16,8 @@ void main() async {
   usePathUrlStrategy();
   // await dotenv.load(fileName: ".env");
   await Supabase.initialize(
-      url: dotenv.env['SUPABASE_URL']!,
-      anonKey: dotenv.env['ANON_PUBLIC_KEY']!);
+      url: "https://jmjejyunfhnjdkiwerik.supabase.co",
+      anonKey: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImptamVqeXVuZmhuamRraXdlcmlrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Mzc3NDA0ODMsImV4cCI6MjA1MzMxNjQ4M30.24L4v2inea3Y0P6FhX824J6BYu8JOOLkJCWZCjMi7-M");
   Get.put<Localization>(Localization(), permanent: true);
   Get.put<HomeController>(HomeController(), permanent: true);
   runApp(const MyApp());

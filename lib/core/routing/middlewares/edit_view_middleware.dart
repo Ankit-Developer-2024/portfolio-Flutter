@@ -57,8 +57,7 @@ class EditViewMiddleware extends GetMiddleware {
               ),
               TextButton(
                 onPressed: () {
-                  if (passwordController.text ==
-                      dotenv.env['EDIT_MODE_PASSWORD']) {
+                  if (passwordController.text == "edit-mode@2025") {
                     Get.back();
                   } else {
                     toast(title: "Wrong Password!", icon: ToastIcon.error);
