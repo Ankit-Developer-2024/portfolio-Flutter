@@ -4,12 +4,13 @@ class UserModel {
   final String techStack;
   final String linkedUrl;
   final String githubUrl;
-  String? locationUrl;
   final String userImageUrl;
   final String userResumeUrl;
   final String phoneNumber;
   final String email;
   final String location;
+  String? locationUrl;
+  String? aboutMe;
 
   UserModel(
       {required this.userName,
@@ -21,8 +22,10 @@ class UserModel {
       required this.phoneNumber,
       required this.email,
       required this.location,
+      required this.id,
       this.locationUrl,
-      required this.id});
+      this.aboutMe
+      });
 
   factory UserModel.fromJson(Map<String, dynamic> json) {
     return UserModel(
@@ -37,6 +40,7 @@ class UserModel {
       phoneNumber: json['phone_no'] ?? '',
       email: json['email'] ?? '',
       location: json['location'] ?? '',
+      aboutMe: json['about_me']
     );
   }
 
@@ -52,7 +56,8 @@ class UserModel {
       "user_resume_url": userResumeUrl,
       "phone_no": phoneNumber,
       "email": email,
-      "location": location
+      "location": location,
+      "about_me": aboutMe
     };
   }
 
@@ -68,6 +73,7 @@ class UserModel {
     String? email,
     String? location,
     String? id,
+    String? aboutMe,
   }) {
     return UserModel(
         id: id ?? this.id,
@@ -80,6 +86,9 @@ class UserModel {
         phoneNumber: phoneNumber ?? this.phoneNumber,
         email: email ?? this.email,
         locationUrl: locationUrl ?? this.locationUrl,
-        location: location ?? this.location);
+        location: location ?? this.location,
+        aboutMe: aboutMe ?? this.aboutMe,
+        
+        );
   }
 }

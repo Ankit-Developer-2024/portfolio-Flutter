@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:portfolio/viewmodels/edit_mode_controller.dart';
 import 'package:portfolio/viewmodels/home_controller.dart';
 import 'package:portfolio/views/edit/widgets/user_home_about_me_dialog_box.dart';
 import 'package:portfolio/views/edit/widgets/user_home_dialog_box.dart';
@@ -9,8 +10,9 @@ import 'package:portfolio/core/styles/app_colors.dart';
 import 'package:portfolio/core/styles/app_dimesions.dart';
 import 'package:portfolio/core/styles/app_test_styles.dart';
 import 'package:portfolio/utils/utilty/utils.dart';
+import 'package:portfolio/views/home/widgets/components/user_what_i_do_ui.dart';
 
-class UserHomeSection extends StatelessWidget {
+class UserHomeSection extends GetView<HomeController> {
   const UserHomeSection({super.key});
 
   @override
@@ -26,6 +28,15 @@ class UserHomeSection extends StatelessWidget {
                 alignment: Alignment.centerRight,
                 child: EditButton(
                   onTap: () {
+                    controller.userModel.value != null
+                        ? Get.find<EditModeController>()
+                            .aboutMeDescController
+                            .text = controller.userModel.value!.aboutMe ?? ""
+                        : null;
+                    controller.userModel.value != null
+                        ? Get.find<EditModeController>().userModel.value =
+                            controller.userModel.value
+                        : null;
                     Get.dialog(const UserHomeAboutMeDialogBox());
                   },
                   color: Get.find<HomeController>().lightThemeMode.value
@@ -44,13 +55,18 @@ class UserHomeSection extends StatelessWidget {
         const SizedBox(
           height: AppDimesions.px_10,
         ),
-        Obx(
-          () => Text(Utils.getString("user_about_me"),
-              style: AppTextStyles.textMedium16mp400(
-                  color: Get.find<HomeController>().lightThemeMode.value
-                      ? AppColors.black
-                      : AppColors.white)),
-        ),
+        Obx(() => (Get.find<HomeController>().userModel.value != null &&
+                Get.find<HomeController>().userModel.value!.aboutMe != null)
+            ? Text(Get.find<HomeController>().userModel.value!.aboutMe!,
+                style: AppTextStyles.textMedium16mp400(
+                    color: Get.find<HomeController>().lightThemeMode.value
+                        ? AppColors.black
+                        : AppColors.white))
+            : Text("Your summary",
+                style: AppTextStyles.textMedium16mp400(
+                    color: Get.find<HomeController>().lightThemeMode.value
+                        ? AppColors.black
+                        : AppColors.white))),
         const SizedBox(
           height: AppDimesions.px_10,
         ),
@@ -62,6 +78,7 @@ class UserHomeSection extends StatelessWidget {
                 child: EditButton(
                   icon: Icons.add,
                   onTap: () {
+                    Get.find<EditModeController>().clearAllWhatIdOFormData();
                     Get.dialog(const UserHomeDialogBox());
                   },
                   color: Get.find<HomeController>().lightThemeMode.value
@@ -83,146 +100,59 @@ class UserHomeSection extends StatelessWidget {
           height: AppDimesions.px_10,
         ),
         LayoutBuilder(builder: (context, constraints) {
-          return Wrap(
-            alignment: WrapAlignment.start,
-            spacing: AppDimesions.px_4,
-            runSpacing: 10,
-            children: [
-              Container(
-                width: constraints.maxWidth < AppDimesions.size_550
-                    ? constraints.maxWidth - AppDimesions.size_10
-                    : constraints.maxWidth / 2 - AppDimesions.size_10,
-                padding: const EdgeInsets.symmetric(
-                    vertical: AppDimesions.px_8,
-                    horizontal: AppDimesions.px_16),
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(AppDimesions.radius_8),
-                    color: AppColors.lightOrangish),
-                child: Column(
-                  children: [
-                    Stack(
-                      children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: [
-                            Align(
-                              alignment: Alignment.topRight,
-                              child: EditButton(
-                                onTap: () {
-                                  Get.dialog(const UserHomeDialogBox());
-                                },
-                                color: Get.find<HomeController>()
-                                        .lightThemeMode
-                                        .value
-                                    ? AppColors.black
-                                    : AppColors.white,
-                              ),
-                            ),
-                            const SizedBox(
-                              width: AppDimesions.px_10,
-                            ),
-                            Align(
-                              alignment: Alignment.topRight,
-                              child: EditButton(
-                                icon: Icons.delete_outlined,
-                                onTap: () {},
-                                color: Get.find<HomeController>()
-                                        .lightThemeMode
-                                        .value
-                                    ? AppColors.black
-                                    : AppColors.white,
-                              ),
-                            ),
-                          ],
-                        ),
-                        Row(
-                          children: [
-                            Image.asset(
-                              Utils.getIcons("app_development.png"),
-                              width: AppDimesions.size_25,
-                              height: AppDimesions.size_25,
-                            ),
-                            Text(
-                              Utils.getString("app_development"),
-                              style: AppTextStyles.textMedium20mp600(),
-                            )
-                          ],
-                        ),
-                      ],
-                    ),
-                    RichText(
-                        text: TextSpan(
-                            style: AppTextStyles.textRegular14mp400(),
+          return Obx(() => Wrap(
+                alignment: WrapAlignment.start,
+                spacing: AppDimesions.px_4,
+                runSpacing: 10,
+                children: controller.userWhatIDoModelList.isNotEmpty
+                    ? controller.userWhatIDoModelList.indexed.map((item) {
+                        final (index, data) = item;
+                        return UserWhatIDoUi(
+                            maxWidth: constraints.maxWidth,
+                            whatIDo: data,
+                            index: index);
+                      }).toList()
+                    : [
+                        Container(
+                          width: constraints.maxWidth < AppDimesions.size_550
+                              ? constraints.maxWidth - AppDimesions.size_10
+                              : constraints.maxWidth / 2 - AppDimesions.size_10,
+                          padding: const EdgeInsets.symmetric(
+                              vertical: AppDimesions.px_8,
+                              horizontal: AppDimesions.px_16),
+                          decoration: BoxDecoration(
+                              borderRadius:
+                                  BorderRadius.circular(AppDimesions.radius_8),
+                              color: AppColors.lightOrangish),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                          TextSpan(
-                              text: Utils.getString(
-                                  "user_app_development_part1")),
-                          TextSpan(
-                              text:
-                                  Utils.getString("user_app_development_part2"),
-                              style: AppTextStyles.textRegular14mp600()),
-                          TextSpan(
-                              text: Utils.getString(
-                                  "user_app_development_part3")),
-                        ])),
-                  ],
-                ),
-              ),
-              const SizedBox(
-                width: AppDimesions.px_10,
-              ),
-              Container(
-                width: constraints.maxWidth < AppDimesions.size_550
-                    ? constraints.maxWidth - AppDimesions.size_10
-                    : constraints.maxWidth / 2 - AppDimesions.size_10,
-                padding: const EdgeInsets.symmetric(
-                    vertical: AppDimesions.px_8,
-                    horizontal: AppDimesions.px_16),
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(AppDimesions.radius_8),
-                    color: AppColors.lightBlueish),
-                child: Column(
-                  children: [
-                    Row(
-                      children: [
-                        Text(
-                          "</>",
-                          style: AppTextStyles.textMedium20mp600(
-                              color: AppColors.primary),
-                        ),
-                        const SizedBox(
-                          width: AppDimesions.px_4,
-                        ),
-                        Flexible(
-                          child: Text(
-                            Utils.getString("web_development"),
-                            maxLines: 5,
-                            overflow: TextOverflow.ellipsis,
-                            style: AppTextStyles.textMedium20mp600(),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    "</>",
+                                    style: AppTextStyles.textMedium20mp600(
+                                        color: AppColors.primary),
+                                  ),
+                                  const SizedBox(
+                                    width: AppDimesions.px_10,
+                                  ),
+                                  Text(
+                                    "Your tech stack",
+                                    style: AppTextStyles.textMedium20mp600(),
+                                  )
+                                ],
+                              ),
+                              Text(
+                                "Your teck stack description",
+                                style: AppTextStyles.textRegular14mp400(),
+                              )
+                            ],
                           ),
                         )
                       ],
-                    ),
-                    RichText(
-                        text: TextSpan(
-                            style: AppTextStyles.textRegular14mp400(),
-                            children: [
-                          TextSpan(
-                              text: Utils.getString(
-                                  "user_web_development_part1")),
-                          TextSpan(
-                              text:
-                                  Utils.getString("user_web_development_part2"),
-                              style: AppTextStyles.textRegular14mp600()),
-                          TextSpan(
-                              text: Utils.getString(
-                                  "user_web_development_part3")),
-                        ])),
-                  ],
-                ),
-              ),
-            ],
-          );
+              ));
         })
       ],
     );

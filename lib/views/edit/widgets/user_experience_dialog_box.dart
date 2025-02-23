@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:portfolio/core/app/componetns/loader.dart';
 import 'package:portfolio/core/styles/app_dimesions.dart';
 import 'package:portfolio/core/styles/app_test_styles.dart';
 import 'package:portfolio/utils/utilty/utils.dart';
@@ -22,7 +23,7 @@ class UserExperienceDialogBox extends GetView<EditModeController> {
       ),
       content: SingleChildScrollView(
         child: SizedBox(
-          width: 400,
+           width: AppDimesions.size_400,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -115,7 +116,7 @@ class UserExperienceDialogBox extends GetView<EditModeController> {
                         style: AppTextStyles.textRegular14mp600(),
                       ),
                       Text(
-                        Utils.getString("user_company_experience_point"),
+                        Utils.getString("at_least_one_point_req"),
                         style: AppTextStyles.textRegular14mp400(),
                       ),
                       UserTextField(
@@ -158,25 +159,37 @@ class UserExperienceDialogBox extends GetView<EditModeController> {
         ),
       ),
       actions: [
-        TextButton(
-          onPressed: () {
-            Get.back();
-            // Close the dialog
-          },
-          child: Text(
-            'Cancel',
-            style: AppTextStyles.textRegular14mp400(),
-          ),
-        ),
-        TextButton(
-          onPressed: () {
-            controller.uploadExperienceData();
-          },
-          child: Text(
-            'Sumbit',
-            style: AppTextStyles.textRegular14mp400(),
-          ),
-        ),
+        Obx(
+          () => controller.isApiLoderShow.value
+              ? const Loader()
+              : Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    TextButton(
+                      onPressed: () {
+                        Get.back();
+                      },
+                      child: Text(
+                        'Cancel',
+                        style: AppTextStyles.textRegular14mp400(),
+                      ),
+                    ),
+                    TextButton(
+                      onPressed: () {
+                        controller.userExperienceModel.value != null
+                            ? controller.updateExperienceData()
+                            : controller.uploadExperienceData();
+                      },
+                      child: Text(
+                        controller.userExperienceModel.value != null
+                            ? "Update"
+                            : 'Sumbit',
+                        style: AppTextStyles.textRegular14mp400(),
+                      ),
+                    ),
+                  ],
+                ),
+        )
       ],
     );
   }

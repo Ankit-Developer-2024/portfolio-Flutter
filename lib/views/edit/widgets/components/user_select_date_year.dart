@@ -225,6 +225,13 @@ class UserSelectDateYear extends GetView<EditModeController> {
                       AppTextStyles.textRegular14mp400(color: AppColors.error),
                 )
               : const SizedBox.shrink(),
+          controller.isEndDateNotPickCorrect.value
+              ? Text(
+                  Utils.getString("end_date_not_pick_correct"),
+                  style:
+                      AppTextStyles.textRegular14mp400(color: AppColors.error),
+                )
+              : const SizedBox.shrink(),
         ],
       ),
     );

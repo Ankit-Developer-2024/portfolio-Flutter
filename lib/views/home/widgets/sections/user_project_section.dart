@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:portfolio/core/routing/app_route.dart';
 import 'package:portfolio/core/styles/app_colors.dart';
 import 'package:portfolio/core/styles/app_dimesions.dart';
+import 'package:portfolio/viewmodels/edit_mode_controller.dart';
 import 'package:portfolio/viewmodels/home_controller.dart';
 import 'package:portfolio/views/edit/widgets/user_project_dialog_box.dart';
 import 'package:portfolio/views/home/widgets/components/edit_button.dart';
@@ -32,6 +34,7 @@ class UserProjectSection extends GetView<HomeController> {
                 child: EditButton(
                   icon: Icons.add,
                   onTap: () {
+                    Get.find<EditModeController>().clearAllProjectFormData();
                     Get.dialog(const UserProjectDialogBox());
                   },
                   color: Get.find<HomeController>().lightThemeMode.value
@@ -46,24 +49,48 @@ class UserProjectSection extends GetView<HomeController> {
           height: AppDimesions.px_10,
         ),
         LayoutBuilder(builder: (context, contraints) {
-          return Wrap(
-            spacing: AppDimesions.px_10,
-            runSpacing: AppDimesions.px_10,
-            runAlignment: WrapAlignment.start,
-            alignment: WrapAlignment.start,
-            children: controller.prorfolioProject.indexed.map((project) {
-              final (index, data) = project;
-              return UserProjectDataUi(
-                  color: index % 2 != 0
-                      ? AppColors.lightBlueish
-                      : const Color.fromARGB(225, 255, 238, 217),
-                  boxWidth: contraints.maxWidth,
-                  projectTechUsed: data["projectTechUsed"],
-                  projectURL: data["projectURL"],
-                  projectDevelopmentIn: data["projectDevelopmentIn"],
-                  projectName: data["projectName"],
-                  listOfImagesPath: data["listOfImagesPath"]);
-            }).toList(),
+          return Obx(
+            () => Wrap(
+              spacing: AppDimesions.px_10,
+              runSpacing: AppDimesions.px_10,
+              runAlignment: WrapAlignment.start,
+              alignment: WrapAlignment.start,
+              children: controller.userProjectModelList.isNotEmpty
+                  ? controller.userProjectModelList.reversed.indexed
+                      .map((project) {
+                      final (index, data) = project;
+                      return UserProjectDataUi(
+                          index: index,
+                          isEditMode: Get.currentRoute == AppRoute.editMode,
+                          color: index % 2 != 0
+                              ? AppColors.lightBlueish
+                              : const Color.fromARGB(225, 255, 238, 217),
+                          boxWidth: contraints.maxWidth,
+                          projectTechUsed: data.projectTechnologyStack,
+                          projectURL: data.projectUrl,
+                          projectDevelopmentIn: data.projectDevelopmentField,
+                          projectName: data.projectName,
+                          projectDescription: data.projectDescription,
+                          listOfImagesPath: data.projectImgUrls,
+                          projectModel: data);
+                    }).toList()
+                  : [
+                      UserProjectDataUi(
+                          index: -1,
+                          isEditMode: false,
+                          color: const Color.fromARGB(225, 255, 238, 217),
+                          boxWidth: contraints.maxWidth,
+                          projectTechUsed: "Project tech used",
+                          projectURL: "",
+                          projectDevelopmentIn:
+                              "Your Project Development Field",
+                          projectName: "Your project name",
+                          projectDescription: const [
+                            "Your project Description"
+                          ],
+                          listOfImagesPath: const [])
+                    ],
+            ),
           );
         })
       ],

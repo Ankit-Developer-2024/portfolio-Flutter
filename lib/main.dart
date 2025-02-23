@@ -12,10 +12,12 @@ import 'package:toastification/toastification.dart';
 import 'package:flutter_web_plugins/url_strategy.dart';
 
 void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   usePathUrlStrategy();
   await dotenv.load(fileName: ".env");
   await Supabase.initialize(
-      url: dotenv.env['SUPABASE_URL']!, anonKey: dotenv.env['ANON_PUBLIC_KEY']!);
+      url: dotenv.env['SUPABASE_URL']!,
+      anonKey: dotenv.env['ANON_PUBLIC_KEY']!);
   Get.put<Localization>(Localization(), permanent: true);
   Get.put<HomeController>(HomeController(), permanent: true);
   runApp(const MyApp());

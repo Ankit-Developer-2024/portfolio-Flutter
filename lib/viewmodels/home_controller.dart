@@ -3,6 +3,17 @@ import 'package:get/get.dart';
 import 'package:portfolio/core/app/componetns/section_seperate_ui.dart';
 import 'package:portfolio/core/app/componetns/universal_toast_ui.dart';
 import 'package:portfolio/core/enum/app_enum.dart';
+import 'package:portfolio/data/models/user_experience_model.dart';
+import 'package:portfolio/data/models/user_model.dart';
+import 'package:portfolio/data/models/user_project_model.dart';
+import 'package:portfolio/data/models/user_skill_model.dart';
+import 'package:portfolio/data/models/user_what_i_do_model.dart';
+import 'package:portfolio/data/repository/api_res_in_bytes_repository.dart';
+import 'package:portfolio/data/repository/user_experience_repository.dart';
+import 'package:portfolio/data/repository/user_project_repository.dart';
+import 'package:portfolio/data/repository/user_repository.dart';
+import 'package:portfolio/data/repository/user_skill_repository.dart';
+import 'package:portfolio/data/repository/user_what_i_do_repository.dart';
 import 'package:portfolio/services/send_email_services.dart';
 import 'package:portfolio/utils/utilty/utils.dart';
 import 'package:portfolio/views/home/widgets/sections/user_contact_section.dart';
@@ -234,6 +245,9 @@ class HomeController extends GetxController {
     }
   }
 
+  RxBool isProjectItemHovering = false.obs;
+  RxBool isOpenProjectDescription = false.obs;
+
   void changeTheme() {
     themeMode.value =
         themeMode.value == ThemeMode.light ? ThemeMode.dark : ThemeMode.light;
@@ -242,19 +256,177 @@ class HomeController extends GetxController {
     return;
   }
 
+  ApiResInBytesRepository apiResInBytesRepository = ApiResInBytesRepository();
+  //user data
+  final UserRepository userRepository = UserRepository();
+  Rxn<UserModel> userModel = Rxn<UserModel>();
+
+  //what i do
+  final UserWhatIDoRepository userWhatIDoRepository = UserWhatIDoRepository();
+  RxList<UserWhatIDoModel> userWhatIDoModelList = <UserWhatIDoModel>[].obs;
+  //experienxce
+  final UserExperienceRepository userExperienceRepository =
+      UserExperienceRepository();
+  RxList<UserExperienceModel> userExperienceModelList =
+      <UserExperienceModel>[].obs;
+
+  //skills
+  final UserSkillRepository userSkillRepository = UserSkillRepository();
+  RxList<UserSkillModel> userSkillModelList = <UserSkillModel>[].obs;
+
+  //projects
+  final UserProjectRepository userProjectRepository = UserProjectRepository();
+  RxList<UserProjectModel> userProjectModelList = <UserProjectModel>[].obs;
+
+  @override
+  void onInit() {
+    super.onInit();
+    getUserData();
+    getWhatIdo();
+    getUserExperience();
+    getUserSkills();
+    getProjectSkills();
+  }
+
+  void getUserData() async {
+    try {
+      final data = await userRepository.getUser();
+      if (data != null) {
+        toast(
+            title: Utils.getString("user_fetch_succ"), icon: ToastIcon.success);
+        userModel.value = data;
+      } else {
+        toast(
+            title: Utils.getString("user_fetch_not_succ"),
+            icon: ToastIcon.warning);
+        userModel.value = null;
+      }
+    } on PostgrestException catch (e) {
+      toast(title: e.message.toString(), icon: ToastIcon.warning);
+    } catch (e) {
+      toast(title: e.toString(), icon: ToastIcon.error);
+    }
+  }
+
+  void getWhatIdo() async {
+    try {
+      final data = await userWhatIDoRepository.getWhatIDoData();
+      if (data.isNotEmpty) {
+        userWhatIDoModelList.value = [...data];
+      } else {
+        toast(
+            title: Utils.getString("user_tech_stack_not_succ"),
+            icon: ToastIcon.warning);
+        userWhatIDoModelList.value = [];
+      }
+    } on PostgrestException catch (e) {
+      toast(title: e.message.toString(), icon: ToastIcon.warning);
+    } catch (e) {
+      toast(title: e.toString(), icon: ToastIcon.error);
+    }
+  }
+
+  void getUserExperience() async {
+    try {
+      final data = await userExperienceRepository.getUserExperienceData();
+      if (data.isNotEmpty) {
+        userExperienceModelList.value = [...data];
+      } else {
+        toast(
+            title: Utils.getString("user_experience_not_succ"),
+            icon: ToastIcon.warning);
+        userExperienceModelList.value = [];
+      }
+    } on PostgrestException catch (e) {
+      toast(title: e.message.toString(), icon: ToastIcon.warning);
+    } catch (e) {
+      toast(title: e.toString(), icon: ToastIcon.error);
+    }
+  }
+
+  void getUserSkills() async {
+    try {
+      final data = await userSkillRepository.getUserSkillsData();
+      if (data.isNotEmpty) {
+        userSkillModelList.value = [...data];
+      } else {
+        toast(
+            title: Utils.getString("user_skills_not_succ"),
+            icon: ToastIcon.warning);
+        userSkillModelList.value = [];
+      }
+    } on PostgrestException catch (e) {
+      toast(title: e.message.toString(), icon: ToastIcon.warning);
+    } catch (e) {
+      toast(title: e.toString(), icon: ToastIcon.error);
+    }
+  }
+
+  void getProjectSkills() async {
+    try {
+      final data = await userProjectRepository.getUserProjectsData();
+      if (data.isNotEmpty) {
+        userProjectModelList.value = [...data];
+      } else {
+        toast(
+            title: Utils.getString("user_project_not_succ"),
+            icon: ToastIcon.warning);
+        userProjectModelList.value = [];
+      }
+    } on PostgrestException catch (e) {
+      toast(title: e.message.toString(), icon: ToastIcon.warning);
+    } catch (e) {
+      toast(title: e.toString(), icon: ToastIcon.error);
+    }
+  }
+
+  Future<Widget> imgFromUrl({required String url}) async {
+    try {
+      final data = await apiResInBytesRepository.getApiResInBytes(url: url);
+      if (data.uint8list != null) {
+        return Image.memory(
+          data.uint8list!,
+          fit: BoxFit.cover,
+        );
+      } else {
+        toast(
+            title: Utils.getString("img_data_fetch_not_succ"),
+            icon: ToastIcon.warning);
+        return const Icon(Icons.image);
+      }
+    } catch (e) {
+      toast(title: e.toString(), icon: ToastIcon.error);
+      return const Icon(Icons.image);
+    }
+  }
+
+  void toggleIsOpenProjectDescription(int index) {
+    userProjectModelList[index].isOpenProjectDescription =
+        !userProjectModelList[index].isOpenProjectDescription;
+
+    userProjectModelList.refresh();
+  }
+
+  void toggleIsProjectItemHovering(int index) {
+    userProjectModelList[index].isProjectItemHovering =
+        !userProjectModelList[index].isProjectItemHovering;
+
+    userProjectModelList.refresh();
+  }
+
   void goToSocialMedia(String? url) async {
     if (url != null && url.isNotEmpty) {
-      final finalUrl = Uri.parse("https://$url");
+      final finalUrl = Uri.parse(url);
       if (!await launchUrl(finalUrl)) {
-        Get.snackbar("Get Some Error", "");
+        toast(title: "Get Some Error", icon: ToastIcon.error);
       }
     } else {
       toast(title: "This project is not hosted yet", icon: ToastIcon.info);
     }
   }
 
-  Future<void> makePhoneCall() async {
-    final Uri finalUrl = Uri(scheme: "tel", path: "8059650329");
+  Future<void> makePhoneCall(String phoneNumber) async {
+    final Uri finalUrl = Uri(scheme: "tel", path: phoneNumber);
     if (!await launchUrl(finalUrl)) {
       toast(
           title: "Phone call not happen",
@@ -264,10 +436,10 @@ class HomeController extends GetxController {
     return;
   }
 
-  Future<void> sentMail() async {
+  Future<void> sentMail(String email) async {
     final Uri finalUrl = Uri(
       scheme: "mailto",
-      path: "kumar990ankit@gmail.com",
+      path: email,
     );
     if (!await launchUrl(finalUrl)) {
       toast(

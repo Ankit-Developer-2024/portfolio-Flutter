@@ -248,6 +248,9 @@ class UserInfoDialogBox extends GetView<EditModeController> {
                         if (val!.isEmpty) {
                           return "User LinkedIn Url is required";
                         }
+                        if (!GetUtils.isURL(val)) {
+                          return 'Enter Valid URL';
+                        }
                         return null;
                       },
                     ),
@@ -264,6 +267,9 @@ class UserInfoDialogBox extends GetView<EditModeController> {
                       validate: (val) {
                         if (val!.isEmpty) {
                           return "User Github Url is required";
+                        }
+                        if (!GetUtils.isURL(val)) {
+                          return 'Enter Valid URL';
                         }
                         return null;
                       },
@@ -283,7 +289,8 @@ class UserInfoDialogBox extends GetView<EditModeController> {
                         if (val!.isEmpty) {
                           return "User Phone Number is required";
                         }
-                        if (val.length > 10 || val.length < 10) {
+
+                        if (!GetUtils.isPhoneNumber(val)) {
                           return 'Enter Valid 10 digit Phone Number';
                         }
                         return null;
@@ -337,7 +344,17 @@ class UserInfoDialogBox extends GetView<EditModeController> {
                     UserTextField(
                       controller: controller.userLocationUrlController,
                       hintText: "Enter your Location Url",
+                      maxLine: 10,
                       validate: (val) {
+                        if (val == null) {
+                          return null;
+                        }
+                        if (val.isEmpty) {
+                          return null;
+                        }
+                        if (!GetUtils.isURL(val)) {
+                          return 'Enter Valid URL';
+                        }
                         return null;
                       },
                     ),
@@ -365,7 +382,9 @@ class UserInfoDialogBox extends GetView<EditModeController> {
                     ),
                     TextButton(
                       onPressed: () {
-                        controller.uploadUserData();
+                        controller.userModel.value != null
+                            ? controller.updateUserData()
+                            : controller.uploadUserData();
                       },
                       child: Obx(
                         () => controller.userModel.value != null

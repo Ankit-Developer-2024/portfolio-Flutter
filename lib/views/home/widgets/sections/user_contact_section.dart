@@ -9,7 +9,7 @@ import 'package:portfolio/viewmodels/home_controller.dart';
 import 'package:portfolio/views/home/widgets/components/heading_with_line_ui.dart';
 import 'package:portfolio/views/home/widgets/components/user_contact_form.dart';
 
-class UserContactSection extends StatelessWidget {
+class UserContactSection extends GetView<HomeController> {
   const UserContactSection({super.key});
 
   @override
@@ -35,7 +35,10 @@ class UserContactSection extends StatelessWidget {
             children: [
               InkWell(
                 onTap: () {
-                  Get.find<HomeController>().makePhoneCall();
+                  controller.userModel.value != null
+                      ? controller.makePhoneCall(
+                          controller.userModel.value!.phoneNumber)
+                      : null;
                 },
                 child: Container(
                   width: constraints.maxWidth < AppDimesions.size_550
@@ -51,14 +54,16 @@ class UserContactSection extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       ConatinerImageText(
-                          imageName: "phone_call.png",
+                          imageUrl: "phone_call.png",
                           color: AppColors.transparent,
                           skillName: Utils.getString("phone_:")),
                       Padding(
                         padding:
                             const EdgeInsets.only(left: AppDimesions.px_16),
                         child: SelectableText(
-                          Utils.getString("phone_no"),
+                          controller.userModel.value != null
+                              ? controller.userModel.value!.phoneNumber
+                              : "Your phone number",
                           style: AppTextStyles.textMedium16mp400(),
                         ),
                       )
@@ -68,7 +73,9 @@ class UserContactSection extends StatelessWidget {
               ),
               InkWell(
                 onTap: () {
-                  Get.find<HomeController>().sentMail();
+                  controller.userModel.value != null
+                      ? controller.sentMail(controller.userModel.value!.email)
+                      : null;
                 },
                 child: Container(
                   width: constraints.maxWidth < AppDimesions.size_550
@@ -84,14 +91,16 @@ class UserContactSection extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       ConatinerImageText(
-                          imageName: "mail.png",
+                          imageUrl: "mail.png",
                           color: AppColors.transparent,
                           skillName: Utils.getString("mail_:")),
                       Padding(
                         padding:
                             const EdgeInsets.only(left: AppDimesions.px_16),
                         child: SelectableText(
-                          Utils.getString("user_email"),
+                          controller.userModel.value != null
+                              ? controller.userModel.value!.email
+                              : "Your email",
                           style: AppTextStyles.textMedium16mp400(),
                         ),
                       )

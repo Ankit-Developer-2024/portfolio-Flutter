@@ -28,7 +28,7 @@ class UserHomeAboutMeDialogBox extends GetView<EditModeController> {
             mainAxisSize: MainAxisSize.min,
             children: [
               Form(
-                  key: controller.formHomeAnoutMeKey,
+                  key: controller.formHomeAboutMeKey,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -70,9 +70,14 @@ class UserHomeAboutMeDialogBox extends GetView<EditModeController> {
           onPressed: () {
             controller.uploadHomeAboutMeData();
           },
-          child: Text(
-            'Sumbit',
-            style: AppTextStyles.textRegular14mp400(),
+          child: Obx(
+            ()=> controller.userModel.value!=null ? Text(
+              'Update ',
+              style: AppTextStyles.textRegular14mp400(),
+            ) :  Text(
+              'Sumbit',
+              style: AppTextStyles.textRegular14mp400(),
+            ),
           ),
         ),
       ],

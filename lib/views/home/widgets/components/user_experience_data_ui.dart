@@ -12,7 +12,8 @@ class UserExperienceDataUi extends GetView<HomeController> {
     super.key,
     required this.yourTechRole,
     required this.yourPostion,
-    required this.date,
+    required this.startDate,
+    required this.endDate,
     required this.companyName,
     required this.companyLocation,
     required this.listOfYourWorkDoneInComapny,
@@ -20,7 +21,8 @@ class UserExperienceDataUi extends GetView<HomeController> {
 
   final String yourTechRole;
   final String yourPostion;
-  final String date;
+  final List<String> startDate;
+  final List<String>? endDate;
   final String companyName;
   final String companyLocation;
   final List<String> listOfYourWorkDoneInComapny;
@@ -57,7 +59,16 @@ class UserExperienceDataUi extends GetView<HomeController> {
                     baseline: TextBaseline.alphabetic,
                     child: SizedBox(width: 10)),
                 TextSpan(
-                    text: date,
+                    text: "${startDate[0]} ${startDate[1]}-",
+                    style: AppTextStyles.textMedium16mp400(
+                        color: controller.lightThemeMode.value
+                            ? AppColors.black
+                            : AppColors.white,
+                        fontStyle: FontStyle.italic)),
+                TextSpan(
+                    text: (endDate != null && endDate!.isNotEmpty)
+                        ? "${endDate![0]} ${endDate![1]}"
+                        : "Currently",
                     style: AppTextStyles.textMedium16mp400(
                         color: controller.lightThemeMode.value
                             ? AppColors.black

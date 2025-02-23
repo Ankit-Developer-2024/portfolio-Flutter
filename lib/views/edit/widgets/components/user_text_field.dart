@@ -8,12 +8,14 @@ class UserTextField extends StatelessWidget {
     required this.controller,
     required this.hintText,
     required this.validate,
+    this.minLine,
     this.maxLine,
     this.keyboard,
   });
   final TextEditingController controller;
   final String hintText;
   final String? Function(String?)? validate;
+  final int? minLine;
   final int? maxLine;
   final TextInputType? keyboard;
   @override
@@ -21,7 +23,7 @@ class UserTextField extends StatelessWidget {
     return TextFormField(
       controller: controller,
       cursorColor: AppColors.black,
-      minLines: 1,
+      minLines: minLine ?? 1,
       maxLines: maxLine ?? 2,
       autovalidateMode: AutovalidateMode.onUserInteraction,
       keyboardType: keyboard ?? TextInputType.text,

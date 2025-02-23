@@ -75,12 +75,13 @@ class Localization extends Translations {
               "As a Flutter developer intern, I specialized in crafting polished UI designs and resolving issues for JustFresh and JustRetailer apps. I also conducted POC and R&D, showcasing my proficiency in app development and problem-solving.",
 
           //edit Mode
-           "image_or_icon": "Image/Icon:",
-           "pick_image": "Pick Image",
-           "pick_images": "Pick Images",
+          "image_or_icon": "Image/Icon:",
+          "pick_image": "Pick Image",
+          "pick_images": "Pick Images",
           "pick_resume": "Pick Resume",
+          "are_you_sure_delete": "Are you sure you want to delete ",
           //sidebar info dialogbox
-          
+
           "user_data": "User Data",
           "user_name": "Name:",
           "user_tech_stack": "Tech Stack:",
@@ -90,9 +91,9 @@ class Localization extends Translations {
           "user_email_title": "Email:",
           "user_location_title": "Location:",
           "user_location_url_title": "Location Url:",
-          "user_image_required":"User image is required.",
-          "user_resume_required":"User resume is required.",
-           
+          "user_image_required": "User image is required.",
+          "user_resume_required": "User resume is required.",
+
           //home dialogbox
           "user_about_me_data": "About Me Data",
           "user_what_i_do_data": "What I do Data",
@@ -100,8 +101,8 @@ class Localization extends Translations {
           "user_what_i_do": "What I do",
           "user_what_i_do_title": "Title:",
           "user_what_i_do_desc": "Description:",
-          
-        
+          "user_what_i_do_desc_highlight_words": "Description highlight words",
+
           //experience dialogbox
           "user_experience_data": "Experience Data",
           "user_tech_stack_in_comapny": "Tech Stack in company:",
@@ -109,27 +110,106 @@ class Localization extends Translations {
           "user_company_name": "Company Name:",
           "user_company_location": "Company Location:",
           "user_company_experience": "Your experience in company/Your work:",
-          "user_company_experience_point": "At least one point is required",
           "user_in_curr_role_or_not": "I am currently working in this role",
           "start_date": "Start Date:",
           "end_date": "End Date:",
           "both_date_required": "Start and end dates are required",
           "start_date_required": "Start date is required",
+          "end_date_not_pick_correct":
+              "End date year must be same or greater than current year.",
 
+          "at_least_one_point_req": "At least one point is required",
 
           //skill dialogbox string
           "user_skill_data": "Skill Data",
           "user_skill_name": "Skill:",
           "user_skill_image_req": "Image is required",
-          
+
           //project dialogbox string
           "user_project_data": "Project Data",
           "user_project_name": "Project Name:",
           "user_development_fields": "Development Field:",
           "user_technology_stack": "Technology Stack:",
+          "user_project_url": "Project Url:",
           "user_peoject_image_min_req": "Minimum 4 image is required",
           "user_peoject_image_max_req": "Maximum 10 images allowed. ",
+          "project_description": "Project Description:",
 
+          // info/user/guid msg
+          "user_fetch_succ": "Your data fetch successfully",
+          "user_fetch_not_succ":
+              "Your data fetch is not successfully or may be we have no data.",
+
+          "user_tech_stack_not_succ":
+              "Teck stack could not be fetched successfully, or there may be no data available.",
+
+          "user_experience_not_succ":
+              "Experience could not be fetched successfully, or there may be no data available.",
+
+          "user_skills_not_succ":
+              "Skills could not be fetched successfully, or there may be no data available.",
+
+          "user_project_not_succ":
+              "Projects could not be fetched successfully, or there may be no data available.",
+
+          "info_upload_succ": "Information upload successfully",
+          "info_upload_not_succ": "Information is not upload successfully",
+          "info_update_succ": "Information updated successfully",
+          "info_update_not_succ": "Information is not updated successfully",
+          "about_me_update_succ":
+              "Your About me section has been updated successfully",
+          "about_me_update_not_succ":
+              "Your About me section has not been update successfully",
+          "user_not_create_yet": "User is not create yet, please first create.",
+
+          "tech_stack_upload_succ":
+              "Your teck stack has been upload successfully",
+          "tech_stack_upload_not_succ":
+              "Your teck stack has not been upload successfully",
+          "tech_stack_updated_succ":
+              "Your teck stack has been updated successfully",
+          "tech_stack_updated_not_succ":
+              "Your teck stack has not been updated successfully",
+          "tech_stack_delete_succ":
+              "Your teck stack has been successfully deleted",
+          "tech_stack_delete_not_succ":
+              "Your teck stack has not been successfully deleted",
+
+          "experience_upload_succ":
+              "Your experience has been upload successfully",
+          "experience_upload_not_succ":
+              "Your experience has not been upload successfully",
+          "experience_updated_succ":
+              "Your experience has been updated successfully",
+          "experience_updated_not_succ":
+              "Your experience has not been updated successfully",
+          "experience_delete_succ":
+              "Your experience has been successfully deleted",
+          "experience_delete_not_succ":
+              "Your experience has not been successfully deleted",
+
+          "skill_upload_succ": "Your skill has been upload successfully",
+          "skill_upload_not_succ":
+              "Your skill has not been upload successfully",
+          "skill_updated_succ": "Your skill has been updated successfully",
+          "skill_updated_not_succ":
+              "Your skill has not been updated successfully",
+          "skill_delete_succ": "Your skill has been successfully deleted",
+          "skill_delete_not_succ":
+              "Your skill has not been successfully deleted",
+
+          "project_upload_succ": "Your project has been upload successfully",
+          "project_upload_not_succ":
+              "Your project has not been upload successfully",
+          "project_updated_succ": "Your project has been updated successfully",
+          "project_updated_not_succ":
+              "Your project has not been updated successfully",
+          "project_delete_succ": "Your project has been successfully deleted",
+          "project_delete_not_succ":
+              "Your project has not been successfully deleted",
+
+          "img_data_fetch_not_succ":
+              "Your image data fetch is not successfully",
         }
       };
 }

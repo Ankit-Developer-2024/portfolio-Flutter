@@ -5,6 +5,20 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 class UserDataSources {
   final SupabaseClient _supabaseClient = Supabase.instance.client;
 
+  Future<List<UserModel>> getUserData() async {
+    try {
+      var userData = await _supabaseClient.from("user_data").select();
+
+      if (userData.isNotEmpty) {
+        return [UserModel.fromJson(userData.first)];
+      } else {
+        return [];
+      }
+    } catch (e) {
+      rethrow;
+    }
+  }
+
   Future<UserModel?> uploadUserData(UserModel user) async {
     try {
       var userData = await _supabaseClient
@@ -27,6 +41,24 @@ class UserDataSources {
           .from("user_data")
           .update(user.toJson())
           .eq('id', user.id)
+          .select();
+
+      return UserModel.fromJson(userData.first);
+    } catch (e) {
+      if (kDebugMode) {
+        print(e.toString());
+      }
+      rethrow;
+    }
+  }
+
+  Future<UserModel?> updateAboutMeSection(
+      {required String aboutMe, required UserModel user}) async {
+    try {
+      var userData = await _supabaseClient
+          .from("user_data")
+          .update({"about_me": aboutMe})
+          .eq("id", user.id)
           .select();
 
       return UserModel.fromJson(userData.first);
@@ -69,24 +101,31 @@ class UserDataSources {
     try {
       if (isImage) {
         int index = user.userImageUrl.length;
-        int? val2 = toInt(user.userImageUrl[index - 1]);
+        int? lastIndexVal = toInt(user.userImageUrl[index - 1]);
+        await _supabaseClient.storage
+            .from("user_storage")
+            .remove(["image-${user.id}-U${lastIndexVal!}"]); //delete
 
         await _supabaseClient.storage
             .from("user_storage")
-            .updateBinary("image-${user.id}-U${val2! + 1}", data);
+            .uploadBinary("image-${user.id}-U${lastIndexVal + 1}", data);
         return _supabaseClient.storage
             .from("user_storage")
-            .getPublicUrl("image-${user.id}-U${val2 + 1}");
+            .getPublicUrl("image-${user.id}-U${lastIndexVal + 1}");
       } else {
-        int index = user.userResumeUrl.length;
-        int? val2 = toInt(user.userResumeUrl[index - 1]);
+        int index = user.userImageUrl.length;
+        int? lastIndexVal = toInt(user.userImageUrl[index - 1]);
 
         await _supabaseClient.storage
             .from("user_storage")
-            .updateBinary("resume-${user.id}-U${val2! + 1}", data);
+            .remove(["resume-${user.id}-U${lastIndexVal!}"]); //delete
+
+        await _supabaseClient.storage
+            .from("user_storage")
+            .uploadBinary("resume-${user.id}-U${lastIndexVal + 1}", data);
         return _supabaseClient.storage
             .from("user_storage")
-            .getPublicUrl("resume-${user.id}-U${val2 + 1}");
+            .getPublicUrl("resume-${user.id}-U${lastIndexVal + 1}");
       }
     } catch (e) {
       if (kDebugMode) {

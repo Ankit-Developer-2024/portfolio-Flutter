@@ -3,11 +3,13 @@ import 'package:get/get.dart';
 import 'package:portfolio/core/styles/app_colors.dart';
 import 'package:portfolio/core/styles/app_dimesions.dart';
 import 'package:portfolio/core/styles/app_test_styles.dart';
+import 'package:portfolio/data/models/user_model.dart';
 import 'package:portfolio/utils/utilty/utils.dart';
 import 'package:portfolio/viewmodels/home_controller.dart';
 
 class UserAndSocialMediaUi extends StatelessWidget {
-  const UserAndSocialMediaUi({super.key});
+  const UserAndSocialMediaUi({super.key, this.userModel});
+  final UserModel? userModel;
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +17,7 @@ class UserAndSocialMediaUi extends StatelessWidget {
       () => Column(
         children: [
           SelectableText(
-            "Ankit Kumar",
+            userModel!=null ? userModel!.userName : "Your name",
             style: AppTextStyles.textMedium20mp600(
                 color: Get.find<HomeController>().lightThemeMode.value
                     ? AppColors.black12
@@ -27,7 +29,7 @@ class UserAndSocialMediaUi extends StatelessWidget {
 
           //user profile
           SelectableText(
-            "Flutter and MERN Stack Developer",
+            userModel!=null ? userModel!.techStack : "Your tech stack",
             style: AppTextStyles.textMedium16mp400(
                 color: Get.find<HomeController>().lightThemeMode.value
                     ? AppColors.black12
@@ -46,8 +48,8 @@ class UserAndSocialMediaUi extends StatelessWidget {
             children: [
               InkWell(
                 onTap: () {
-                  Get.find<HomeController>().goToSocialMedia(
-                      Get.find<HomeController>().userLinkedInUrl);
+                 userModel!=null ? Get.find<HomeController>().goToSocialMedia(
+                        userModel!.linkedUrl) : null;
                 },
                 child: Container(
                   padding: const EdgeInsets.all(AppDimesions.px_6),
@@ -65,8 +67,8 @@ class UserAndSocialMediaUi extends StatelessWidget {
               ),
               InkWell(
                 onTap: () {
-                  Get.find<HomeController>().goToSocialMedia(
-                      Get.find<HomeController>().userGithubUrl);
+                  userModel!=null ? Get.find<HomeController>().goToSocialMedia(
+                        userModel!.githubUrl) : null;
                 },
                 child: Container(
                   padding: const EdgeInsets.all(AppDimesions.px_6),

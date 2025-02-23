@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:portfolio/core/app/componetns/loader.dart';
 import 'package:portfolio/core/styles/app_colors.dart';
 import 'package:portfolio/core/styles/app_dimesions.dart';
 import 'package:portfolio/core/styles/app_test_styles.dart';
@@ -22,95 +23,110 @@ class UserSkillDialogBox extends GetView<EditModeController> {
         style: AppTextStyles.textMedium20mp600(),
       ),
       content: SingleChildScrollView(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Form(
-                key: controller.formSkillKey,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Text(
-                      Utils.getString("image_or_icon"),
-                      style: AppTextStyles.textRegular14mp600(),
-                    ),
-                    Obx(
-                      () => Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          ImageOrIconPick(
-                            onTap: () {
-                              controller.skillPickImage();
-                            },
-                            image: controller.skillImage.value,
-                            borderColor: controller.isSkillImageRequired.value
-                                ? AppColors.error
-                                : null,
-                          ),
-                          controller.isSkillImageRequired.value
-                              ? Padding(
-                                  padding: const EdgeInsets.only(
-                                      left: AppDimesions.px_10),
-                                  child: Text(
-                                    Utils.getString("user_skill_image_req"),
-                                    style: AppTextStyles.textRegular14mp400(
-                                        color: AppColors.error),
-                                  ),
-                                )
-                              : const SizedBox.shrink()
-                        ],
+        child: SizedBox(
+          width: AppDimesions.size_400,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Form(
+                  key: controller.formSkillKey,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Text(
+                        Utils.getString("image_or_icon"),
+                        style: AppTextStyles.textRegular14mp600(),
                       ),
-                    ),
-                    const SizedBox(
-                      height: AppDimesions.px_10,
-                    ),
-                    Text(
-                      Utils.getString("user_skill_name"),
-                      style: AppTextStyles.textRegular14mp600(),
-                    ),
-                    UserTextField(
-                      controller: controller.skillNameController,
-                      hintText: "Enter your skill name",
-                      validate: (val) {
-                        if (val!.isEmpty) {
-                          return "Skill name is required";
-                        }
-                        return null;
-                      },
-                    ),
-                  ],
-                )),
-          ],
+                      Obx(
+                        () => Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            ImageOrIconPick(
+                              onTap: () {
+                                controller.skillPickImage();
+                              },
+                              image: controller.skillImage.value,
+                              borderColor: controller.isSkillImageRequired.value
+                                  ? AppColors.error
+                                  : null,
+                            ),
+                            controller.isSkillImageRequired.value
+                                ? Padding(
+                                    padding: const EdgeInsets.only(
+                                        left: AppDimesions.px_10),
+                                    child: Text(
+                                      Utils.getString("user_skill_image_req"),
+                                      style: AppTextStyles.textRegular14mp400(
+                                          color: AppColors.error),
+                                    ),
+                                  )
+                                : const SizedBox.shrink()
+                          ],
+                        ),
+                      ),
+                      const SizedBox(
+                        height: AppDimesions.px_10,
+                      ),
+                      Text(
+                        Utils.getString("user_skill_name"),
+                        style: AppTextStyles.textRegular14mp600(),
+                      ),
+                      UserTextField(
+                        controller: controller.skillNameController,
+                        hintText: "Enter your skill name",
+                        validate: (val) {
+                          if (val!.isEmpty) {
+                            return "Skill name is required";
+                          }
+                          return null;
+                        },
+                      ),
+                    ],
+                  )),
+            ],
+          ),
         ),
       ),
       actions: [
-        TextButton(
-          onPressed: () {
-            Get.back();
-            // Close the dialog
-          },
-          child: Text(
-            'Cancel',
-            style: AppTextStyles.textRegular14mp400(),
-          ),
-        ),
-        TextButton(
-          onPressed: () {
-            controller.uploadSkillData();
-          },
-          child: Text(
-            'Sumbit',
-            style: AppTextStyles.textRegular14mp400(),
-          ),
-        ),
+        Obx(
+          () => controller.isApiLoderShow.value
+              ? const Loader()
+              : Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    TextButton(
+                      onPressed: () {
+                        Get.back();
+                        // Close the dialog
+                      },
+                      child: Text(
+                        'Cancel',
+                        style: AppTextStyles.textRegular14mp400(),
+                      ),
+                    ),
+                    TextButton(
+                      onPressed: () {
+                        controller.userSkillModel.value != null
+                            ? controller.upldateSkillData()
+                            : controller.uploadSkillData();
+                      },
+                      child: Text(
+                        controller.userSkillModel.value != null
+                            ? "Update"
+                            : 'Sumbit',
+                        style: AppTextStyles.textRegular14mp400(),
+                      ),
+                    ),
+                  ],
+                ),
+        )
       ],
     );
-  
   }
 }

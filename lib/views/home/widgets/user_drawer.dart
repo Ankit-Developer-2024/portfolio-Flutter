@@ -5,6 +5,7 @@ import 'package:portfolio/core/styles/app_colors.dart';
 import 'package:portfolio/core/styles/app_dimesions.dart';
 import 'package:portfolio/core/styles/app_test_styles.dart';
 import 'package:portfolio/utils/utilty/utils.dart';
+import 'package:portfolio/viewmodels/edit_mode_controller.dart';
 import 'package:portfolio/viewmodels/home_controller.dart';
 import 'package:portfolio/views/edit/widgets/user_info_dialog_box.dart';
 import 'package:portfolio/views/home/widgets/components/edit_button.dart';
@@ -60,6 +61,11 @@ class UserDrawer extends GetView<HomeController> {
                             alignment: Alignment.topRight,
                             child: EditButton(
                               onTap: () {
+                                 controller.userModel.value != null
+                                ? Get.find<EditModeController>()
+                                    .initializeEditUserFormData(
+                                        controller.userModel.value!)
+                                : null;
                                 Get.dialog(const UserInfoDialogBox());
                               },
                               color: controller.lightThemeMode.value
@@ -73,7 +79,9 @@ class UserDrawer extends GetView<HomeController> {
                             mainAxisSize: MainAxisSize.max,
                             children: [
                               //user name
-                              const UserAndSocialMediaUi(),
+                              UserAndSocialMediaUi(
+                                userModel: controller.userModel.value,
+                              ),
 
                               //user location(address)
                               const SizedBox(
@@ -100,7 +108,11 @@ class UserDrawer extends GetView<HomeController> {
                                   children: [
                                     InkWell(
                                       onTap: () {
-                                        controller.makePhoneCall();
+                                        controller.userModel.value != null
+                                            ? controller.makePhoneCall(
+                                                controller.userModel.value!
+                                                    .phoneNumber)
+                                            : null;
                                       },
                                       child: SidebarUserDataUi(
                                           boxWidth: constraints.maxWidth - 140,
@@ -110,7 +122,10 @@ class UserDrawer extends GetView<HomeController> {
                                     ),
                                     InkWell(
                                       onTap: () {
-                                        controller.sentMail();
+                                        controller.userModel.value != null
+                                            ? controller.sentMail(controller
+                                                .userModel.value!.email)
+                                            : null;
                                       },
                                       child: SidebarUserDataUi(
                                           boxWidth: constraints.maxWidth - 140,
@@ -120,8 +135,13 @@ class UserDrawer extends GetView<HomeController> {
                                     ),
                                     InkWell(
                                       onTap: () {
-                                        controller.goToSocialMedia(
-                                            controller.userLocationUrl);
+                                        controller.userModel.value!
+                                                    .locationUrl !=
+                                                null
+                                            ? controller.goToSocialMedia(
+                                                controller.userModel.value!
+                                                    .locationUrl)
+                                            : null;
                                       },
                                       hoverColor: AppColors.darkModeColor,
                                       child: SidebarUserDataUi(
@@ -219,10 +239,12 @@ class UserDrawer extends GetView<HomeController> {
                     child: ClipRRect(
                       borderRadius:
                           BorderRadius.circular(AppDimesions.radius_6),
-                      child: Image.asset(
-                        Utils.getImages("user.jpg"),
-                        fit: BoxFit.cover,
-                      ),
+                      child:  controller.userModel.value != null
+                      ?  Image.network(controller.userModel.value!.userImageUrl,fit: BoxFit.cover,)
+                      : const Icon(
+                          Icons.person,
+                          size: 100,
+                        ),
                     ),
                   ),
                 ),

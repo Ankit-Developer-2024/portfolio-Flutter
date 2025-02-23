@@ -41,7 +41,7 @@ class UserResumeSection extends GetView<HomeController> {
                   children: [
                     Obx(
                       () => ConatinerImageText(
-                        imageName: "education.png",
+                        imageUrl: "education.png",
                         skillName: Utils.getString("education"),
                         textStyle: AppTextStyles.textMedium20mp600(
                           color: controller.lightThemeMode.value
@@ -82,7 +82,7 @@ class UserResumeSection extends GetView<HomeController> {
                   children: [
                     Obx(
                       () => ConatinerImageText(
-                        imageName: "experience.png",
+                        imageUrl: "experience.png",
                         skillName: Utils.getString("experience"),
                         textStyle: AppTextStyles.textMedium20mp600(
                           color: controller.lightThemeMode.value

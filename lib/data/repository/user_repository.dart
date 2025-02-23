@@ -5,6 +5,21 @@ import 'package:portfolio/data/models/user_model.dart';
 import 'package:uuid/uuid.dart';
 
 class UserRepository {
+  final UserDataSources _userDataSources = UserDataSources();
+
+  Future<UserModel?> getUser() async {
+    try {
+      final userData = await _userDataSources.getUserData();
+      if (userData.isNotEmpty) {
+        return userData.first;
+      } else {
+        return null;
+      }
+    } catch (e) {
+      rethrow;
+    }
+  }
+
   Future<UserModel?> uploadUserData({
     required String userName,
     required String techStack,
@@ -80,6 +95,17 @@ class UserRepository {
 
       user = user.copyWith(userImageUrl: imgUrl, userResumeUrl: resUrl);
       final userData = await UserDataSources().updateUserData(user);
+      return userData;
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  Future<UserModel?> updateAboutMeSection(
+      {required String aboutMe, required UserModel user}) async {
+    try {
+      final userData = await UserDataSources()
+          .updateAboutMeSection(aboutMe: aboutMe, user: user);
       return userData;
     } catch (e) {
       rethrow;
