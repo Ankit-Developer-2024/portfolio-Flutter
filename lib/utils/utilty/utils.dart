@@ -17,9 +17,6 @@ class Utils {
     return "assets/icons/$icon";
   }
 
-  static String getImages(String image) {
-    return "assets/images/$image";
-  }
 
   static Future<void> downloadPdf() async {
     try {

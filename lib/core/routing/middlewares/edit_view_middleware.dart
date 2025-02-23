@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get/get.dart';
 import 'package:portfolio/core/app/componetns/universal_toast_ui.dart';
 import 'package:portfolio/core/enum/app_enum.dart';

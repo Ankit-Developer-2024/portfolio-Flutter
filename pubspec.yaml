@@ -45,10 +45,6 @@ flutter:
 
   assets:
     - assets/icons/
-    - assets/images/
-    - assets/images/api/
-    - assets/images/ecom/
-    - assets/images/portfolio_img/
     - assets/pdf/Ankit-Resume.pdf 
 
 
