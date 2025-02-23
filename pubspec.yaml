@@ -50,7 +50,7 @@ flutter:
     - assets/images/ecom/
     - assets/images/portfolio_img/
     - assets/pdf/Ankit-Resume.pdf 
-    - .env
+  #  - .env
 
 
   # fonts:

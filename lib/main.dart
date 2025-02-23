@@ -14,7 +14,7 @@ import 'package:flutter_web_plugins/url_strategy.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   usePathUrlStrategy();
-  await dotenv.load(fileName: ".env");
+  // await dotenv.load(fileName: ".env");
   await Supabase.initialize(
       url: dotenv.env['SUPABASE_URL']!,
       anonKey: dotenv.env['ANON_PUBLIC_KEY']!);
