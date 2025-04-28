@@ -92,8 +92,8 @@ class UserProjectDataUi extends GetView<HomeController> {
                         }).toList(),
                   options: CarouselOptions(
                     autoPlay: true,
-                    autoPlayInterval: Durations.extralong4,
-                    autoPlayAnimationDuration: Durations.long4,
+                    autoPlayInterval: const Duration(seconds: 2),
+                    autoPlayAnimationDuration: const Duration(seconds: 2),
                     enlargeCenterPage: true,
                     viewportFraction: 0.9,
                     aspectRatio: 2.0,

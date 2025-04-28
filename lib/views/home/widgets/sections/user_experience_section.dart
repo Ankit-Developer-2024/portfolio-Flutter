@@ -50,6 +50,7 @@ class UserExperienceSection extends GetView<HomeController> {
         Obx(() => controller.userExperienceModelList.isNotEmpty
             ? ListView.separated(
                 shrinkWrap: true,
+                physics: const NeverScrollableScrollPhysics(),
                 reverse: true,
                 itemCount: controller.userExperienceModelList.length,
                 itemBuilder: (context, index) {
